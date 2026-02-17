@@ -1,0 +1,2 @@
+case,perpetrator,victim,AUCR_predicted,AUCR_observed,pred_obs_ratio,class_predicted,class_observed,class_match
+midazolam_ketoconazole,Ketoconazole,Midazolam,27.587088573215336,11.2,2.463132908322798,Strong,Strong,TRUE

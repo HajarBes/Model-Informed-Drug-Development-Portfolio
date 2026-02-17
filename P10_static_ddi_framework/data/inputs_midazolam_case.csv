@@ -1,0 +1,26 @@
+category,enzyme_transporter,parameter,value,units,source,notes
+info,NA,case_name,midazolam_ketoconazole,,,Benchmark: strong CYP3A4 inhibition
+info,NA,perpetrator_name,Ketoconazole,,,Strong CYP3A4 inhibitor
+info,NA,victim_name,Midazolam,,,CYP3A4 probe substrate
+perpetrator,NA,dose_mg,400,mg,FDA DDI Guidance 2020,Standard DDI study dose
+perpetrator,NA,mw,531.43,g/mol,PubChem CID 456201,
+perpetrator,NA,cmax_total_ugml,8.07,ug/mL,Huang et al 2004,400 mg single oral dose
+perpetrator,NA,fu_plasma,0.01,,FDA DDI Guidance 2020,99% protein bound
+victim,CYP3A4,fm,0.94,,Gorski et al 2003,Hepatic fraction metabolized by CYP3A4
+victim,CYP3A4,fg,0.43,,Thummel et al 1996,Gut wall extraction fraction (1-Fg; Fg=0.57)
+inhibition,CYP3A4,ki_uM,0.015,uM,FDA DDI Guidance 2020 Table 7,Reversible inhibition
+inhibition,CYP3A4,kinact_per_min,0.048,1/min,Mayhew et al 2000,Time-dependent inhibition
+inhibition,CYP3A4,KI_uM,0.86,uM,Mayhew et al 2000,TDI half-maximal concentration
+inhibition,CYP2C9,ki_uM,10.0,uM,Niwa et al 2005,Weak inhibitor
+inhibition,CYP2C19,ki_uM,3.4,uM,Niwa et al 2005,Moderate inhibitor
+inhibition,CYP2D6,ki_uM,100,uM,FDA DDI Guidance 2020,Negligible (>100 uM)
+inhibition,CYP1A2,ki_uM,100,uM,FDA DDI Guidance 2020,Negligible (>100 uM)
+induction,NA,available,FALSE,,,No significant induction reported for ketoconazole
+transporter,P-gp,ic50_uM,NA,uM,,Not primary DDI mechanism
+transporter,BCRP,ic50_uM,NA,uM,,Not assessed
+transporter,OATP1B1,ic50_uM,NA,uM,,Not assessed
+transporter,OATP1B3,ic50_uM,NA,uM,,Not assessed
+degradation,CYP3A4,kdeg_per_min,0.00032,1/min,Yang et al 2008,Hepatic CYP3A4 t1/2 ~36h
+degradation,CYP3A4,kdeg_gut_per_min,0.00048,1/min,Galetin et al 2008,Intestinal CYP3A4 t1/2 ~24h
+validation,CYP3A4,observed_aucr,11.2,,Olkkola et al 1994,Midazolam AUC ratio with ketoconazole 400mg
+validation,CYP3A4,observed_class,Strong,,,FDA classification

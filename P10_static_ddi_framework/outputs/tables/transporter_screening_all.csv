@@ -1,0 +1,14 @@
+case,transporter,IC50_uM,I_relevant,conc_type,ratio,threshold,flag
+midazolam_ketoconazole,P-gp,NA,3010.744594772595,[I]gut,NA,10,NA
+midazolam_ketoconazole,BCRP,NA,3010.744594772595,[I]gut,NA,10,NA
+midazolam_ketoconazole,OATP1B1,NA,0.15185443049884279,"[I]max,u",NA,0.1,NA
+midazolam_ketoconazole,OATP1B3,NA,0.15185443049884279,"[I]max,u",NA,0.1,NA
+sotorasib_perpetrator,P-gp,3,6849.803781662504,[I]gut,2283.2679272208347,10,TRUE
+sotorasib_perpetrator,BCRP,0.54,6849.803781662504,[I]gut,12684.821817893524,10,TRUE
+sotorasib_perpetrator,OATP1B1,0.29,1.5442383160899036,"[I]max,u",5.3249597106548405,0.1,TRUE
+sotorasib_perpetrator,OATP1B3,1.1,1.5442383160899036,"[I]max,u",1.403853014627185,0.1,TRUE
+sotorasib_perpetrator,MATE1,1,1.5442383160899036,"[I]max,u",1.5442383160899036,0.1,TRUE
+sotorasib_perpetrator,MATE2-K,3,1.5442383160899036,"[I]max,u",0.5147461053633012,0.1,TRUE
+sotorasib_perpetrator,OAT1,50,1.5442383160899036,"[I]max,u",0.030884766321798072,0.1,FALSE
+sotorasib_perpetrator,OAT3,50,1.5442383160899036,"[I]max,u",0.030884766321798072,0.1,FALSE
+sotorasib_perpetrator,OCT2,50,1.5442383160899036,"[I]max,u",0.030884766321798072,0.1,FALSE

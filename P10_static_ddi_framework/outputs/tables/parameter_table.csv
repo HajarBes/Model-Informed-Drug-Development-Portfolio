@@ -1,0 +1,11 @@
+parameter,units,ketoconazole,sotorasib,source
+Ki_CYP3A4,uM,0.015,10,Obach 2007 / FDA NDA review
+Imax_u,uM,0.15185443049884279,1.5442383160899036,Computed from Cmax*fu/MW
+Igut,uM,3010.744594772595,6849.803781662504,Computed from dose/250mL/MW
+fm_CYP3A4,fraction,0.94,NA,Midazolam literature
+fg_CYP3A4,fraction,0.43,NA,Midazolam literature
+kinact,1/min,0.048,0.04,Obach 2007 / FDA NDA review
+KI,uM,0.86,3.5,Obach 2007 / FDA NDA review
+kdeg_hepatic,1/min,3.2e-4,3.2e-4,Yang 2008
+Emax_CYP3A4,fold,NA,8.1,FDA NDA 214665 review
+EC50_CYP3A4,uM,NA,1.5,FDA NDA 214665 review

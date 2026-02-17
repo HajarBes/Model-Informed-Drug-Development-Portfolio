@@ -1,0 +1,5 @@
+case,transporter,IC50_uM,I_relevant,conc_type,ratio,threshold,flag
+midazolam_ketoconazole,P-gp,NA,3010.744594772595,[I]gut,NA,10,NA
+midazolam_ketoconazole,BCRP,NA,3010.744594772595,[I]gut,NA,10,NA
+midazolam_ketoconazole,OATP1B1,NA,0.15185443049884279,"[I]max,u",NA,0.1,NA
+midazolam_ketoconazole,OATP1B3,NA,0.15185443049884279,"[I]max,u",NA,0.1,NA

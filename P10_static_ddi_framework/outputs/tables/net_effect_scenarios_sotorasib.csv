@@ -1,0 +1,7 @@
+scenario,use_tdi,use_induct,d_value,observed,AUCR,direction,recommendation
+TDI only (no induction),TRUE,FALSE,NA,FALSE,12.386006972819537,Inhibition dominant,Strong inhibition -> clinical study needed
+Induction only (no TDI),FALSE,TRUE,1,FALSE,0.23697074084774272,Induction dominant,Strong induction -> clinical study needed
+"Combined, d=1.0 (conservative)",TRUE,TRUE,1,FALSE,6.026326425793763,Inhibition dominant,Strong inhibition -> clinical study needed
+"Combined, d=0.5 (moderate calibration)",TRUE,TRUE,0.5,FALSE,8.107839404644906,Inhibition dominant,Strong inhibition -> clinical study needed
+"Combined, d=0.2 (empirical calibration)",TRUE,TRUE,0.2,FALSE,10.227382307826748,Inhibition dominant,Strong inhibition -> clinical study needed
+Observed clinical,NA,NA,NA,TRUE,0.48,Induction dominant,Clinical result confirms net induction

@@ -1,0 +1,88 @@
+=== [I]gut Sanity Check ===
+
+Formula (method 1 - via ug/mL):
+  dose_ug  = dose_mg * 1000
+  Igut_ugml = dose_ug / V_gut_mL   (FDA assumes V_gut = 250 mL)
+  Igut_uM   = (Igut_ugml / MW) * 1000
+
+Formula (method 2 - via umol/L):
+  dose_umol = dose_mg / MW * 1000
+  V_gut_L   = 0.250 L
+  Igut_uM   = dose_umol / V_gut_L
+
+Perpetrator: Ketoconazole
+Dose: 400 mg
+MW: 531.43 g/mol
+
+--- Method 1 ---
+  dose_ug   = 400000 ug
+  Igut_ugml = 400000 / 250 = 1600 ug/mL
+  Igut_uM   = (1600 / 531.43) * 1000 = 3010.74 uM
+
+--- Method 2 ---
+  dose_umol = 400 / 531.43 * 1000 = 752.686 umol
+  V_gut_L   = 0.250 L
+  Igut_uM   = 752.686 / 0.250 = 3010.74 uM
+
+Computed [I]gut = 3010.74 uM
+
+--- Unit consistency assertion ---
+  Method 1: 3010.74 uM
+  Method 2: 3010.74 uM
+  Match: PASS
+
+--- Interpretation ---
+[I]gut is intentionally a worst-case screening concentration.
+It assumes the entire oral dose dissolves in 250 mL of GI fluid.
+This value can be orders of magnitude higher than systemic [I]max,u.
+[I]gut / [I]max,u ratio = 3010.74 / 0.151854 = 19827x
+This conservative bias is by design (FDA 2020 guidance) to ensure
+potential intestinal DDIs are not missed at the screening stage.
+Results flagged by [I]gut should be interpreted qualitatively,
+not as quantitative predictions of clinical DDI magnitude.
+
+
+=== [I]gut Sanity Check ===
+
+Formula (method 1 - via ug/mL):
+  dose_ug  = dose_mg * 1000
+  Igut_ugml = dose_ug / V_gut_mL   (FDA assumes V_gut = 250 mL)
+  Igut_uM   = (Igut_ugml / MW) * 1000
+
+Formula (method 2 - via umol/L):
+  dose_umol = dose_mg / MW * 1000
+  V_gut_L   = 0.250 L
+  Igut_uM   = dose_umol / V_gut_L
+
+Perpetrator: Sotorasib
+Dose: 960 mg
+MW: 560.6 g/mol
+
+--- Method 1 ---
+  dose_ug   = 960000 ug
+  Igut_ugml = 960000 / 250 = 3840 ug/mL
+  Igut_uM   = (3840 / 560.6) * 1000 = 6849.8 uM
+
+--- Method 2 ---
+  dose_umol = 960 / 560.6 * 1000 = 1712.45 umol
+  V_gut_L   = 0.250 L
+  Igut_uM   = 1712.45 / 0.250 = 6849.8 uM
+
+Computed [I]gut = 6849.8 uM
+
+--- Unit consistency assertion ---
+  Method 1: 6849.8 uM
+  Method 2: 6849.8 uM
+  Match: PASS
+
+--- Interpretation ---
+[I]gut is intentionally a worst-case screening concentration.
+It assumes the entire oral dose dissolves in 250 mL of GI fluid.
+This value can be orders of magnitude higher than systemic [I]max,u.
+[I]gut / [I]max,u ratio = 6849.8 / 1.54424 = 4436x
+This conservative bias is by design (FDA 2020 guidance) to ensure
+potential intestinal DDIs are not missed at the screening stage.
+Results flagged by [I]gut should be interpreted qualitatively,
+not as quantitative predictions of clinical DDI magnitude.
+
+

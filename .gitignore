@@ -213,3 +213,11 @@ __marimo__/
 **/*.pdf
 data/raw/
 kras-g12c-qsp-model/data/raw/
+
+# R intermediate / binary files
+*.rds
+*.RData
+*.Rhistory
+
+# P10: exclude timestamped run logs (keep igut_sanity.txt)
+P10_static_ddi_framework/outputs/logs/run_*.log

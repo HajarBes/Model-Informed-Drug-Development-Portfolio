@@ -1,0 +1,32 @@
+category,enzyme_transporter,parameter,value,units,source,notes
+info,NA,case_name,sotorasib_perpetrator,,,Sotorasib DDI risk as perpetrator
+info,NA,perpetrator_name,Sotorasib,,,KRAS G12C inhibitor (LUMAKRAS)
+info,NA,victim_name,NA,,,General assessment - no specific victim
+perpetrator,NA,dose_mg,960,mg,LUMAKRAS Label 2021,Dose used in clinical DDI studies
+perpetrator,NA,mw,560.6,g/mol,PubChem CID 137278711,
+perpetrator,NA,cmax_total_ugml,7.87,ug/mL,LUMAKRAS Label Clinical Pharmacology,Geometric mean Cmax at 960 mg QD
+perpetrator,NA,fu_plasma,0.11,,LUMAKRAS Label,89% protein bound
+inhibition,CYP3A4,ki_uM,10.0,uM,Estimated from FDA Review NDA 214665,Weak reversible component
+inhibition,CYP3A4,kinact_per_min,0.04,1/min,Estimated from FDA Review NDA 214665,Time-dependent inhibitor - confirmed in label
+inhibition,CYP3A4,KI_uM,3.5,uM,Estimated from FDA Review NDA 214665,TDI concentration parameter
+inhibition,CYP2C8,ki_uM,0.8,uM,Estimated (IC50~1.6 uM / 2),Label confirms clinically relevant inhibition
+inhibition,CYP2C9,ki_uM,50,uM,LUMAKRAS Label,Not clinically relevant per label
+inhibition,CYP2C19,ki_uM,50,uM,LUMAKRAS Label,Not clinically relevant per label
+inhibition,CYP2D6,ki_uM,50,uM,LUMAKRAS Label,Not clinically relevant per label
+inhibition,CYP1A2,ki_uM,50,uM,LUMAKRAS Label,Not clinically relevant per label
+induction,CYP3A4,emax_fold,8.1,,Estimated from FDA Review NDA 214665,~8x induction at 3 uM in hepatocytes
+induction,CYP3A4,ec50_uM,1.5,uM,Estimated from FDA Review NDA 214665,Estimated from dose-response in hepatocytes
+induction,CYP3A4,d_scaling,1.0,,Conservative default,No empirical calibration
+transporter,P-gp,ic50_uM,3.0,uM,LUMAKRAS Label,Intestinal efflux
+transporter,BCRP,ic50_uM,0.54,uM,LUMAKRAS Label,Intestinal efflux
+transporter,OATP1B1,ic50_uM,0.29,uM,LUMAKRAS Label,Hepatic uptake
+transporter,OATP1B3,ic50_uM,1.1,uM,LUMAKRAS Label,Hepatic uptake
+transporter,MATE1,ic50_uM,1.0,uM,LUMAKRAS Label,Renal
+transporter,MATE2-K,ic50_uM,3.0,uM,LUMAKRAS Label,Renal
+transporter,OAT1,ic50_uM,50,uM,LUMAKRAS Label,Not clinically relevant
+transporter,OAT3,ic50_uM,50,uM,LUMAKRAS Label,Not clinically relevant
+transporter,OCT2,ic50_uM,50,uM,LUMAKRAS Label,Not clinically relevant
+degradation,CYP3A4,kdeg_per_min,0.00032,1/min,Yang et al 2008,Hepatic CYP3A4 t1/2 ~36h
+degradation,CYP3A4,kdeg_gut_per_min,0.00048,1/min,Galetin et al 2008,Intestinal CYP3A4 t1/2 ~24h
+validation,CYP3A4,observed_effect,AUC decreased 52%,,LUMAKRAS Label,Net inducer of CYP3A4 (midazolam as probe)
+validation,CYP3A4,observed_class,Weak inducer,,LUMAKRAS Label,Induction dominates over TDI

@@ -1,0 +1,2 @@
+case,perpetrator,victim,cyp_flagged,tdi_present,induction_flag,trans_flagged,AUCR_pred,classification,recommendation
+sotorasib_perpetrator,Sotorasib,General assessment,TRUE,TRUE,TRUE,TRUE,NA,NA,Clinical DDI study or PBPK for CYP inhibition; Evaluate TDI contribution via PBPK; Clinical DDI study or PBPK for CYP induction; PBPK recommended to resolve net inhibition vs. induction; Clinical DDI study for flagged transporters

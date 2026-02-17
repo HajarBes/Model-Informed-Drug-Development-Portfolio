@@ -1,0 +1,3 @@
+case,perpetrator,dose_mg,MW,Cmax_total_ugml,fu,Imax_u_uM,Igut_uM,Igut_over_Imaxu
+midazolam_ketoconazole,Ketoconazole,400,531.43,8.07,0.01,0.15185443049884279,3010.744594772595,19826.517967781907
+sotorasib_perpetrator,Sotorasib,960,560.6,7.87,0.11,1.5442383160899036,6849.803781662504,4435.716761002656

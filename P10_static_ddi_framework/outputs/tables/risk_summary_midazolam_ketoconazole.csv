@@ -1,0 +1,2 @@
+case,perpetrator,victim,cyp_flagged,tdi_present,induction_flag,trans_flagged,AUCR_pred,classification,recommendation
+midazolam_ketoconazole,Ketoconazole,Midazolam,TRUE,TRUE,FALSE,FALSE,27.587088573215336,Strong,Clinical DDI study or PBPK for CYP inhibition; Evaluate TDI contribution via PBPK
