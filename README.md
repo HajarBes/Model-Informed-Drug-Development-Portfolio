@@ -24,7 +24,7 @@ A 9-state ODE model explaining why sotorasib (LUMAKRAS) achieves durable respons
 
 ### [POPPK — Oral Midazolam CYP3A4 Probe](02-POPPK-midazolam-cyp3a4-probe/)
 
-Population pharmacokinetic analysis of the standard CYP3A4 probe substrate (7.5 mg, N=120), with parameters calibrated to the OSP Midazolam PBPK model (40+ clinical studies).
+Population pharmacokinetic analysis of the standard CYP3A4 probe substrate (7.5 mg, N=120), with parameters calibrated to the OSP Midazolam PBPK model (qualified against multiple published clinical studies).
 
 **Highlights:**
 - 2-compartment SAEM estimation (nlmixr2/rxode2), dAIC = 467 vs 1-compartment

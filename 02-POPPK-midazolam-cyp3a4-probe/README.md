@@ -1,21 +1,22 @@
-# Population PK of Oral Midazolam
+# Population PK of Oral Midazolam (CYP3A4 Probe)
 
-**Industry-aligned PopPK workflow | nlmixr2 + rxode2 | OSP PBPK-calibrated**
+**PopPK workflow (nlmixr2 + rxode2) | PBPK-informed simulation | external literature benchmarking (OSP digitized)**
 
-This project demonstrates a full PopPK workflow using a PBPK-calibrated
-simulated dataset. An external literature qualification module overlays
-model-predicted typical profiles on OSP digitized mean +/- SD
-concentration-time data to assess structural consistency.
+This project presents an end-to-end PopPK workflow for oral midazolam,
+implemented in nlmixr2/rxode2. The primary analysis uses a PBPK-informed
+simulated dataset (no real patient data) to demonstrate model development,
+diagnostics, covariate evaluation, and simulation-based decision support.
+A secondary external literature benchmarking module compares model typical
+predictions (ETAs = 0) against OSP digitized study-level mean +/- SD
+concentration-time profiles to assess structural consistency.
 
-Population pharmacokinetic analysis of oral midazolam (7.5 mg, single dose)
-in 120 healthy adults. The dataset is simulated with parameters calibrated to
-the [OSP Midazolam PBPK model](https://github.com/Open-Systems-Pharmacology/Midazolam-Model)
-(validated against 40+ clinical studies), producing publication-realistic
-concentration-time profiles. No real patient data are used.
-
-The workflow follows the structure of the FDA PopPK Guidance (2022): model
-development, diagnostics, covariate evaluation, simulation-based dose
-assessment, and a CYP3A4 inhibition bridge to DDI risk.
+The simulated dataset (7.5 mg, single dose, N = 120 healthy adults) is
+parameterized from the
+[OSP Midazolam PBPK model](https://github.com/Open-Systems-Pharmacology/Midazolam-Model)
+(qualified against multiple published clinical studies; see References).
+The workflow is aligned with FDA PopPK guidance (2022): model development,
+diagnostics, covariate evaluation, simulation-based dose assessment, and
+a CYP3A4 inhibition bridge to DDI risk.
 
 > **Start here:** [`report/EXECUTIVE_SUMMARY.md`](report/EXECUTIVE_SUMMARY.md)
 > then [`report/REPORT_SUBMISSION_STYLE.md`](report/REPORT_SUBMISSION_STYLE.md)
@@ -96,7 +97,10 @@ subjects fall outside the 0.80-1.25 band due to variability alone.
 
 ---
 
-## Biology of the Model
+## Model Interpretation and Identifiability
+
+With oral-only data, the model identifies CL/F and V/F; CL and F are
+not separately identifiable.
 
 **CL/F = 52 L/h** is apparent oral clearance. It reflects systemic
 CL (~25 L/h) divided by oral bioavailability (~0.5). The model cannot
@@ -130,10 +134,10 @@ framework's mechanistic predictions.
 
 ## External Literature Qualification
 
-External structural qualification assessment: evaluates consistency of
-model-predicted central tendency (typical prediction; ETAs = 0) against
-digitized study-level mean +/- SD profiles. This assessment does not
-evaluate individual-level predictive performance.
+External literature benchmarking (structural): compares model-predicted
+central tendency (typical prediction; ETAs = 0) to digitized study-level
+mean +/- SD profiles. This benchmarking does not evaluate individual-level
+predictive performance and does not validate IIV or covariate effects.
 
 Model-predicted typical concentration-time curves are overlaid on
 12 digitized mean +/- SD profiles from the
@@ -141,7 +145,7 @@ Model-predicted typical concentration-time curves are overlaid on
 spanning 1-15 mg doses and N = 10-65 per study. Because the OSP source
 data are aggregated (study-level mean +/- SD) without individual
 concentrations or covariates, this module supports structural/typical-profile
-benchmarking only (not IIV/covariate validation).
+benchmarking only.
 
 See [`qualification_set.md`](data/literature_osp_midazolam/qualification_set.md)
 for inclusion criteria.
