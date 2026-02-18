@@ -100,8 +100,8 @@ tissues (central) and more slowly into muscle/fat (peripheral). The
 
 | Project | Role |
 |---------|------|
-| **P4 (this)** | Characterizes midazolam baseline PK |
-| **P10 (Static DDI)** | Evaluates how CYP3A4 inhibitors alter midazolam AUC |
+| **02-POPPK** | Characterizes midazolam baseline PK |
+| **03-Static-DDI** | Evaluates how CYP3A4 inhibitors alter midazolam AUC |
 | **Future PBPK** | OSP model bridges PopPK to mechanistic modeling |
 
 The CYP3A4 inhibition scenario (script 07) demonstrates the logic chain:
