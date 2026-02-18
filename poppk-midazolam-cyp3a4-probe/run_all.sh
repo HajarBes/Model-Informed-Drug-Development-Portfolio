@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # Usage:
-#   cd projects/04_poppk_anchor_midazolam_osp_calibrated
+#   cd poppk-midazolam-cyp3a4-probe
 #   bash run_all.sh
 #
 # Prerequisites:

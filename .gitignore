@@ -223,4 +223,4 @@ kras-g12c-qsp-model/data/raw/
 P10_static_ddi_framework/outputs/logs/run_*.log
 
 # P4: exclude timestamped run logs
-projects/04_poppk_anchor_midazolam_osp_calibrated/outputs/logs/run_*.log
+poppk-midazolam-cyp3a4-probe/outputs/logs/run_*.log
