@@ -84,6 +84,21 @@ concentration-dependent inhibition kinetics, time-dependent inactivation,
 or gut-wall effects. See P10 (Static DDI Framework) for formal DDI
 risk assessment.
 
+### 7. External Literature Qualification Scope
+
+The literature qualification module uses aggregated (mean +/- SD)
+concentration-time profiles from the OSP observed-data database. These
+data are digitized from published figures, not raw bioanalytical
+measurements. No individual-level concentrations or subject-level
+covariates (WT, SEX, AGE) are available. Consequently, this module
+assesses structural model consistency (typical profile shape and
+magnitude) only. It does not validate population-level variability (IIV),
+covariate relationships, or individual predictions. The 2-fold AUC ratio
+band is used as a conventional benchmarking reference (guidance-aligned
+heuristic), not a formal acceptance criterion. PI bands shown in overlay figures are derived from the
+simulated PopPK model's IIV parameters, not from literature-derived
+variability estimates.
+
 ## What Would Be Needed for a Real Submission
 
 | Component | This Project | Clinical-Grade Analysis |

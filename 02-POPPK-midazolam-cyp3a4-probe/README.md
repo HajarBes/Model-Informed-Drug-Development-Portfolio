@@ -1,6 +1,11 @@
-#  Population PK of Oral Midazolam
+# Population PK of Oral Midazolam
 
 **Industry-aligned PopPK workflow | nlmixr2 + rxode2 | OSP PBPK-calibrated**
+
+This project demonstrates a full PopPK workflow using a PBPK-calibrated
+simulated dataset. An external literature qualification module overlays
+model-predicted typical profiles on OSP digitized mean +/- SD
+concentration-time data to assess structural consistency.
 
 Population pharmacokinetic analysis of oral midazolam (7.5 mg, single dose)
 in 120 healthy adults. The dataset is simulated with parameters calibrated to
@@ -10,7 +15,7 @@ concentration-time profiles. No real patient data are used.
 
 The workflow follows the structure of the FDA PopPK Guidance (2022): model
 development, diagnostics, covariate evaluation, simulation-based dose
-assessment, and a CYP3A4 inhibition bridge to DDI risk (P10).
+assessment, and a CYP3A4 inhibition bridge to DDI risk.
 
 > **Start here:** [`report/EXECUTIVE_SUMMARY.md`](report/EXECUTIVE_SUMMARY.md)
 > then [`report/REPORT_SUBMISSION_STYLE.md`](report/REPORT_SUBMISSION_STYLE.md)
@@ -35,7 +40,7 @@ assessment, and a CYP3A4 inhibition bridge to DDI risk (P10).
 Midazolam is the standard sensitive CYP3A4 probe substrate. Its PK is
 dominated by CYP3A4-mediated first-pass metabolism in both the gut wall
 and liver (oral F < 50%). This makes it the reference compound for DDI
-studies and connects this analysis directly to P10 (Static DDI Framework):
+studies and connects this analysis directly to the Static DDI Framework:
 the baseline PK characterized here is the same PK that perpetrator drugs
 alter in a DDI scenario.
 
@@ -55,6 +60,18 @@ Every figure answers a specific decision question:
 | [`wt_auc_ratio.png`](figures/wt_auc_ratio.png) | Is dose adjustment needed by weight? |
 | [`exposure_dose_auc.png`](figures/exposure_dose_auc.png) | How does AUC vary by dose and weight? |
 | [`cyp3a4_inhibition_fold_change.png`](figures/cyp3a4_inhibition_fold_change.png) | What AUC change under CYP3A4 inhibition? |
+
+### Goodness-of-Fit
+
+![GOF 4-panel](figures/gof_4panel.png)
+
+### Visual Predictive Check
+
+![VPC](figures/vpc.png)
+
+### Covariate Forest Plot
+
+![Forest plot](figures/forest_covariate_auc.png)
 
 ---
 
@@ -106,8 +123,43 @@ tissues (central) and more slowly into muscle/fat (peripheral). The
 
 The CYP3A4 inhibition scenario (script 07) demonstrates the logic chain:
 baseline PopPK quantifies CL/F, CYP3A4 inhibition reduces CL/F, and
-the resulting ~2x AUC fold-change is consistent with P10's mechanistic
-static DDI predictions.
+the resulting ~2x AUC fold-change is consistent with the static DDI
+framework's mechanistic predictions.
+
+---
+
+## External Literature Qualification
+
+External structural qualification assessment: evaluates consistency of
+model-predicted central tendency (typical prediction; ETAs = 0) against
+digitized study-level mean +/- SD profiles. This assessment does not
+evaluate individual-level predictive performance.
+
+Model-predicted typical concentration-time curves are overlaid on
+12 digitized mean +/- SD profiles from the
+[OSP Database for Observed Data](https://github.com/Open-Systems-Pharmacology/Database-for-observed-data)
+spanning 1-15 mg doses and N = 10-65 per study. Because the OSP source
+data are aggregated (study-level mean +/- SD) without individual
+concentrations or covariates, this module supports structural/typical-profile
+benchmarking only (not IIV/covariate validation).
+
+See [`qualification_set.md`](data/literature_osp_midazolam/qualification_set.md)
+for inclusion criteria.
+
+| Figure | Question |
+|--------|----------|
+| [`lit_overlay_mean_profiles.png`](figures/lit_overlay_mean_profiles.png) | Do typical predictions track published mean profiles? |
+| [`lit_dose_stratified_overlays.png`](figures/lit_dose_stratified_overlays.png) | Is the dose-concentration relationship consistent across 1-15 mg? |
+| [`lit_external_vpc_like.png`](figures/lit_external_vpc_like.png) | External PI overlay — do observed means fall within model PI bands? |
+| [`lit_qualification_summary.png`](figures/lit_qualification_summary.png) | Are predicted/observed AUC ratios within the 2-fold benchmarking band? |
+
+### Dose-Stratified Literature Overlay (12 studies, 1-15 mg)
+
+![Dose-stratified overlays](figures/lit_dose_stratified_overlays.png)
+
+### AUC Ratio: Predicted vs Observed (11/12 within 2-fold)
+
+![AUC ratio summary](figures/lit_qualification_summary.png)
 
 ---
 
@@ -115,17 +167,19 @@ static DDI predictions.
 
 ```bash
 cd 02-POPPK-midazolam-cyp3a4-probe
-bash run_all.sh    # 7 scripts, ~10 min total
+bash run_all.sh                          # Simulated PopPK (steps 1-7, default)
+bash run_all.sh literature_qualification # OSP literature qualification (steps 8-9)
+bash run_all.sh all                      # Full pipeline (steps 1-9)
 ```
 
-Step 1 (simulation) needs only base R + deSolve. Steps 2-7 require
-nlmixr2/rxode2.
+Steps 1-7 (simulated PopPK) need R + deSolve + nlmixr2/rxode2.
+Steps 8-9 (literature qualification) need Python 3 + openpyxl + R + deSolve.
 
 ## Project Structure
 
 ```
 02-POPPK-midazolam-cyp3a4-probe/
-├── run_all.sh                              # Single reproducible entrypoint
+├── run_all.sh                              # Pipeline entrypoint (simulated/lit_qual/all)
 ├── analysis/
 │   ├── 00_setup.R                          # Packages, paths, true parameters
 │   ├── 01_simulate_trial_dataset.R         # 120-subject OSP-calibrated trial
@@ -134,15 +188,25 @@ nlmixr2/rxode2.
 │   ├── 04_covariates.R                     # Allometric WT + forest plot
 │   ├── 05_simulation_decision.R            # Dose scenarios + recommendation
 │   ├── 06_verify_aucr.R                    # AUCR verification + bootstrap CI
-│   └── 07_cyp3a4_inhibition_bridge.R       # CYP3A4 sensitivity → P10 bridge
+│   ├── 07_cyp3a4_inhibition_bridge.R       # CYP3A4 sensitivity bridge
+│   ├── 08_extract_osp_profiles.py          # OSP data extraction (Python)
+│   └── 09_literature_qualification.R       # Literature structural qualification
+├── scripts/
+│   └── run_literature_qualification.sh     # Standalone qualification wrapper
 ├── data/
 │   ├── simulated/                          # NONMEM-format dataset + dictionary
-│   └── sources/                            # OSP calibration notes + citations
-├── figures/                                # 10 decision-oriented figures
-├── outputs/tables/                         # Estimates, verified AUCR, DDI summary
+│   ├── sources/                            # OSP calibration notes + citations
+│   └── literature_osp_midazolam/           # OSP extracted profiles + provenance
+│       ├── raw/                            # Source xlsx
+│       ├── extracted/                      # Processed CSVs
+│       ├── provenance.md                   # Data lineage
+│       ├── transforms.md                   # Unit conversions
+│       └── qualification_set.md            # Inclusion criteria + study table
+├── figures/                                # Decision-oriented figures
+├── outputs/tables/                         # Estimates, AUCR, qualification summary
 └── report/
     ├── EXECUTIVE_SUMMARY.md                # 1-page decision summary
-    ├── REPORT_SUBMISSION_STYLE.md          # 10-section guidance-aligned report
+    ├── REPORT_SUBMISSION_STYLE.md          # Guidance-aligned report
     ├── METHODS.md                          # Equations, estimation, software
     └── LIMITATIONS_AND_SCOPE.md            # Scope + what a real analysis needs
 ```
@@ -168,6 +232,8 @@ nlmixr2/rxode2.
 | `05_simulation_decision.R` | `exposure_dose_auc.png`, `wt_auc_ratio.png` |
 | `06_verify_aucr.R` | `aucr_stratum_shift_summary.csv`, `aucr_definition.md` |
 | `07_cyp3a4_inhibition_bridge.R` | `cyp3a4_inhibition_fold_change.png` |
+| `08_extract_osp_profiles.py` | `mean_profiles_midazolam_po.csv`, `provenance.md` |
+| `09_literature_qualification.R` | `lit_*.png` (4 figures), `literature_qualification_summary.csv` |
 
 ## References
 

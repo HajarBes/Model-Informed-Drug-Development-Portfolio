@@ -384,7 +384,97 @@ CYP3A4 inhibitors.
    are from asymptotic covariance only. A clinical-grade analysis would
    include 500-1000 bootstrap replicates.
 
-## 10. Conclusions
+## 10. External Literature Qualification
+
+External structural qualification assessment: evaluates consistency of
+model-predicted central tendency (typical prediction; ETAs = 0) against
+digitized study-level mean +/- SD profiles. This assessment does not
+evaluate individual-level predictive performance.
+
+Because the OSP source data are aggregated (study-level mean +/- SD)
+without individual concentrations or covariates, this module supports
+structural/typical-profile benchmarking only (not IIV/covariate
+validation).
+
+### 10.1 Data Source
+
+12 control/baseline arms from published midazolam PO studies (N = 10-65,
+doses 1-15 mg, 10-21 timepoints per profile), extracted from the OSP
+Database for Observed Data (Open-Systems-Pharmacology, 2024). All data
+are aggregated (study-level means +/- SD); no individual-level
+concentrations or subject-level covariates are available. See
+`data/literature_osp_midazolam/qualification_set.md` for inclusion
+criteria and study details.
+
+### 10.2 Method
+
+Typical profiles were generated at each study's actual dose using fitted
+THETAs (Ka = 2.26 h^-1, CL/F = 52.3 L/h, Vc/F = 46.6 L, Q/F = 16.8
+L/h, Vp/F = 62.5 L). Population prediction intervals (90%) were
+computed from 500 simulated subjects per dose using the simulated PopPK
+model's IIV (TRUE_OMEGA), not literature-derived variability.
+
+### 10.3 Metrics
+
+Primary metrics: Unweighted RMSE and AUC ratio (predicted / observed).
+The 0.5-2.0 AUC ratio band is used as a conventional benchmarking
+reference (guidance-aligned heuristic), not a formal acceptance criterion.
+
+Secondary: Weighted RMSE (1/SD^2 weights) as sensitivity analysis.
+Digitized SD values may reflect digitization uncertainty in addition to
+biological variability.
+
+### 10.4 Results
+
+**Figures:**
+- `lit_overlay_mean_profiles.png` — All studies overlaid with typical curves
+- `lit_dose_stratified_overlays.png` — Dose-faceted with 90% PI bands
+- `lit_external_vpc_like.png` — External PI overlay (not pcVPC)
+- `lit_qualification_summary.png` — Per-study AUC ratio bar chart
+
+**Table:** `outputs/tables/literature_qualification_summary.csv`
+
+### 10.5 Interpretation
+
+Agreement is strongest around 7.5 mg (the probe dose used in the
+simulated PopPK dataset), where Mueller 2009 achieves an AUC ratio of
+1.10 and Ahonen 1995 reaches 1.28. The 15 mg studies (Olkkola 1993,
+Backman 1996, Bornemann 1986) show AUC ratios of 1.24-1.50, consistent
+with the model's dose-linear structure.
+
+The main deviation occurs at Hohmann 2015 (3 mg, AUC ratio 2.39), the
+only study outside the 2-fold band. This likely reflects a combination
+of the low dose (where digitization transfer error has proportionally
+larger impact on the absolute concentration values), the study's mixed
+microdose/standard design (0.003 mg and 3 mg arms in the same
+protocol), and potential differences in assay sensitivity or
+formulation between this study and the studies used to calibrate the
+OSP PBPK model parameters.
+
+The 1 mg dose group (Wiesinger, Zahner, Chattopadhyay) shows systematic
+overprediction (AUC ratios 1.42-1.96). At these low doses, absolute
+concentrations are small (Cmax ~5-10 ng/mL), amplifying the relative
+impact of digitization transfer error and assay sensitivity differences.
+
+Overall, 11/12 studies fall within the 2-fold benchmarking band, and the
+model captures the dose-concentration relationship across a 15-fold dose
+range (1-15 mg). This supports structural plausibility of the fitted
+PopPK model parameters while preserving the simulated dataset as the
+primary basis for the full PopPK workflow demonstration (IIV, covariates,
+simulation-based decision analysis).
+
+### 10.6 Limitations
+
+OSP profiles are digitized from published figures; SD values reflect
+digitization uncertainty in addition to biological variability. No
+covariate matching is possible (no individual WT, SEX, AGE). This
+qualification assesses structural model consistency only — it does
+not constitute external validation of population-level variability
+or covariate effects. PI bands shown in overlay figures are derived
+from the simulated PopPK model's IIV parameters, not from
+literature-derived variability estimates.
+
+## 11. Conclusions
 
 A 2-compartment PopPK model with first-order absorption adequately describes
 the pharmacokinetics of oral midazolam 7.5 mg in a simulated healthy adult

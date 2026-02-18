@@ -31,8 +31,9 @@ Population pharmacokinetic analysis of the standard CYP3A4 probe substrate (7.5 
 - Allometric weight scaling with verified exposure analysis and bootstrap CIs
 - Production diagnostics: GOF, VPC, eta distributions, individual fits, forest plot
 - CYP3A4 inhibition bridge connecting baseline PK to DDI risk
+- External literature qualification against 12 OSP studies (11/12 within 2-fold AUC ratio)
 
-**Tools:** R, nlmixr2, rxode2 | **Domain:** Clinical Pharmacology, PopPK, DDI
+**Tools:** R, nlmixr2, rxode2, Python | **Domain:** Clinical Pharmacology, PopPK, DDI
 
 ---
 

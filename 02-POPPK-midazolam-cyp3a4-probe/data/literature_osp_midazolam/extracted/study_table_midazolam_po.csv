@@ -1,0 +1,153 @@
+study_id,study_label,reference,grouping,n,dose_mg,n_timepoints,time_range_h,data_type,fasted_fed
+49,Ahonen 1995,http://www.ncbi.nlm.nih.gov/pubmed/8527290,Control (Perpetrator Placebo),12,7.5,11,0.0-17.0,Aggregated,fasted
+50,Ahonen 1995,http://www.ncbi.nlm.nih.gov/pubmed/8527290,with Perpetrator (Itraconazole),12,7.5,11,74.0-91.0,Aggregated,fasted
+51,Allonen 1981,https://www.ncbi.nlm.nih.gov/pubmed/6117393,oral,6,15.0,12,0.2-7.0,Aggregated,Fasted
+53,Backman 1996,https://www.ncbi.nlm.nih.gov/pubmed/8549036,Control (Perpetrator Placebo),10,15.0,10,0.5-10.0,Aggregated,fasted
+54,Backman 1996,https://www.ncbi.nlm.nih.gov/pubmed/8549036,with Perpetrator (Rifampicin),10,15.0,10,113.5-123.0,Aggregated,fasted
+55,Backman 1998,https://www.ncbi.nlm.nih.gov/pubmed/9591931,Phase I (Control (Perpetrator Placebo)),9,15.0,10,0.5-10.0,Aggregated,Fasted
+56,Backman 1998,https://www.ncbi.nlm.nih.gov/pubmed/9591931,Phase IV (during Perpetrator (Rifampicin)),9,15.0,4,113.5-115.0,Aggregated,Fasted
+57,Backman 1998,https://www.ncbi.nlm.nih.gov/pubmed/9591931,Phase V (4 days after Perpetrator (Rifampicin)),9,15.0,7,185.5-190.0,Aggregated,Fasted
+58,Backman 1998,https://www.ncbi.nlm.nih.gov/pubmed/9591931,Phase II (during Perpetrator (Itraconazole)),9,15.0,11,74.5-93.0,Aggregated,Fasted
+59,Backman 1998,https://www.ncbi.nlm.nih.gov/pubmed/9591931,Phase III (4 days after Perpetrator (Itraconazole)),9,15.0,11,170.5-189.0,Aggregated,Fasted
+104,Bornemann 1986,https://www.ncbi.nlm.nih.gov/pubmed/2936766,1 h after a meal,18,15.0,13,1.5-11.0,Aggregated,Fed
+105,Bornemann 1986,https://www.ncbi.nlm.nih.gov/pubmed/2936766,1 h before a meal,18,15.0,14,0.2-10.0,Aggregated,Fasted
+106,Bornemann 1986,https://www.ncbi.nlm.nih.gov/pubmed/2936766,with a meal,18,15.0,15,0.2-12.0,Aggregated,Fed
+107,Bornemann 1986,https://www.ncbi.nlm.nih.gov/pubmed/2936766,fasting condition,18,15.0,14,0.2-10.0,Aggregated,Fasted
+112,Chung 2006,https://www.ncbi.nlm.nih.gov/pubmed/16580903,Control (Perpetrator Placebo),18,,7,0.5-6.0,Aggregated,Fasted
+113,Chung 2006,https://www.ncbi.nlm.nih.gov/pubmed/16580903,with Perpetrator (Rifampicin),18,,5,166.2-168.0,Aggregated,Fasted
+114,Chung 2006,https://www.ncbi.nlm.nih.gov/pubmed/16580903,with Perpetrator (Ketoconazole),18,,9,118.5-148.0,Aggregated,Fasted
+118,Darwish 2008,https://www.ncbi.nlm.nih.gov/pubmed/18076219,oral,24,5.0,14,0.2-24.0,Aggregated,Fasted
+128,Eap 2004,https://www.ncbi.nlm.nih.gov/pubmed/15114429,0.075 mg Control (Perpetrator Placebo),21,0.075,7,0.5-6.0,Aggregated,Fasted
+129,Eap 2004,https://www.ncbi.nlm.nih.gov/pubmed/15114429,0.075 mg with Perpetrator (Rifampicin),4,0.075,6,90.5-94.0,Aggregated,Fasted
+130,Eap 2004,https://www.ncbi.nlm.nih.gov/pubmed/15114429,0.075 mg with Perpetrator (Ketoconazole),4,0.075,7,48.5-54.0,Aggregated,Fasted
+131,Eap 2004,https://www.ncbi.nlm.nih.gov/pubmed/15114429,7.5 mg Control (Perpetrator Placebo),13,7.5,8,0.5-8.0,Aggregated,Fasted
+132,Eap 2004,https://www.ncbi.nlm.nih.gov/pubmed/15114429,7.5 mg with Perpetrator (Rifampicin),4,7.5,8,114.5-122.0,Aggregated,Fasted
+184,Greenblat 1984,https://www.ncbi.nlm.nih.gov/pubmed/6742481,"po - f, 136kg, 36y (obese female)",10,10.0,13,0.5-24.0,Typical,Fasted
+185,Greenblat 1984,https://www.ncbi.nlm.nih.gov/pubmed/6742481,"po - f, 61kg, 37y (normal female)",10,10.0,12,0.2-12.0,Typical,Fasted
+186,Greenblat 1984,https://www.ncbi.nlm.nih.gov/pubmed/6742481,"po - m, 70kg, 32y (young male)",10,10.0,12,0.2-8.0,Typical,Fasted
+187,Greenblat 1984,https://www.ncbi.nlm.nih.gov/pubmed/6742481,"po - m, 80kg, 70y (elderly male)",9,10.0,12,0.5-24.0,Typical,Fasted
+188,Greenblat 2003,https://www.ncbi.nlm.nih.gov/pubmed/12891222,Control (Perpetrator Placebo),25,6.0,10,0.5-8.0,Aggregated,
+189,Greenblat 2003,https://www.ncbi.nlm.nih.gov/pubmed/12891223,with Perpetrator (GFJ),25,6.0,10,0.5-8.0,Aggregated,Fed
+203,Wiesinger 2020,https://www.ncbi.nlm.nih.gov/pubmed/32275771,Control phase (no RIF),65,1.0,14,0.5-24.0,Aggregated,
+204,Wiesinger 2020,https://www.ncbi.nlm.nih.gov/pubmed/32275771,Weak-induction phase (RIF 10 mg),65,1.0,14,180.5-204.0,Aggregated,
+205,Wiesinger 2020,https://www.ncbi.nlm.nih.gov/pubmed/32275771,Strong-induction phase (RIF 600 mg),65,1.0,14,444.5-468.0,Aggregated,
+214,Gurley 2006,https://www.ncbi.nlm.nih.gov/pubmed/16432272,Control pre-Rifampicin (Perpetrator Placebo),19,8.0,10,0.2-6.0,Aggregated,Fasted
+215,Gurley 2006,https://www.ncbi.nlm.nih.gov/pubmed/16432272,with Perpetrator (Rifampicin),19,8.0,10,146.2-152.0,Aggregated,
+216,Gurley 2006,https://www.ncbi.nlm.nih.gov/pubmed/16432272,Control pre-Clarithromycin (Perpetrator Placebo),19,8.0,10,0.2-6.0,Aggregated,Fasted
+217,Gurley 2006,https://www.ncbi.nlm.nih.gov/pubmed/16432272,with Perpetrator (Clarithomycin),19,8.0,10,146.2-152.0,Aggregated,
+218,Gurley 2006,https://www.ncbi.nlm.nih.gov/pubmed/16432272,Control pre-Black cohosh (Perpetrator Placebo),19,8.0,10,0.2-6.0,Aggregated,Fasted
+219,Gurley 2006,https://www.ncbi.nlm.nih.gov/pubmed/16432272,Control pre-Milk thistle (Perpetrator Placebo),19,8.0,10,0.2-6.0,Aggregated,Fasted
+220,Gurley 2008a,https://www.ncbi.nlm.nih.gov/pubmed/17495878,Control pre-Rifampicin (Perpetrator Placebo),16,8.0,11,0.0-6.0,Aggregated,Fasted
+221,Gurley 2008a,https://www.ncbi.nlm.nih.gov/pubmed/17495878,with Perpetrator (Rifampicin),16,8.0,11,146.0-152.0,Aggregated,
+222,Gurley 2008a,https://www.ncbi.nlm.nih.gov/pubmed/17495878,Control pre-Clarithromycin (Perpetrator Placebo),16,8.0,11,0.0-6.0,Aggregated,Fasted
+223,Gurley 2008a,https://www.ncbi.nlm.nih.gov/pubmed/17495878,with Perpetrator (Clarithomycin),16,8.0,11,146.0-152.0,Aggregated,
+224,Gurley 2008a,https://www.ncbi.nlm.nih.gov/pubmed/17495878,Control pre-Goldenseal (Perpetrator Placebo),16,8.0,11,0.0-6.0,Aggregated,Fasted
+225,Gurley 2008a,https://www.ncbi.nlm.nih.gov/pubmed/17495878,Control pre-Kava kava (Perpetrator Placebo),16,8.0,11,0.0-6.0,Aggregated,Fasted
+263,Hohmann 2015,https://www.ncbi.nlm.nih.gov/pubmed/25588320,po 0.003 mg,16,0.003,13,0.2-24.0,Aggregated,Fasted
+264,Hohmann 2015,https://www.ncbi.nlm.nih.gov/pubmed/25588320,po 3 mg,16,3.0,13,0.2-24.0,Aggregated,Fasted
+285,Kharasch 2004,https://www.ncbi.nlm.nih.gov/pubmed/15536460,po #1 Control (Perpetrator Placebo),10,3.0,16,0.1-9.0,Aggregated,Fasted
+286,Kharasch 2004,https://www.ncbi.nlm.nih.gov/pubmed/15536460,po #1 with Perpetrator (Rifampicin),10,3.0,13,128.1-134.0,Aggregated,Fasted
+303,Kharasch 2011,https://www.ncbi.nlm.nih.gov/pubmed/21562488,po Control (Perpetrator Placebo),12,3.0,21,0.0-9.0,Aggregated,
+304,Kharasch 2011,https://www.ncbi.nlm.nih.gov/pubmed/21562488,po with Perpetrator (Rifampicin @ 5 mg),12,3.0,22,132.0-141.0,Aggregated,
+305,Kharasch 2011,https://www.ncbi.nlm.nih.gov/pubmed/21562488,po with Perpetrator (Rifampicin @ 10 mg),12,3.0,22,132.0-140.0,Aggregated,
+306,Kharasch 2011,https://www.ncbi.nlm.nih.gov/pubmed/21562488,po with Perpetrator (Rifampicin @ 25 mg),12,3.0,22,132.0-139.0,Aggregated,
+307,Kharasch 2011,https://www.ncbi.nlm.nih.gov/pubmed/21562488,po with Perpetrator (Rifampicin @ 75 mg),12,3.0,22,132.0-138.0,Aggregated,
+343,Link 2008,https://www.ncbi.nlm.nih.gov/pubmed/18537963,po Control (Perpetrator Placebo),8,7.5,13,10.0-1440.0,Aggregated,Fasted
+344,Link 2008,https://www.ncbi.nlm.nih.gov/pubmed/18537963,po with Perpetrator (Rifampicin),8,7.5,10,8650.0-9000.0,Aggregated,Fasted
+353,Markert 2013,https://www.ncbi.nlm.nih.gov/pubmed/23748747,Control (Perpetrator Placebo),11,3.0,4,2.0-4.0,Aggregated,Fasted
+354,Markert 2013,https://www.ncbi.nlm.nih.gov/pubmed/23748747,with Perpetrator (Clarithromycin),11,3.0,4,74.2-76.2,Aggregated,Fasted
+361,Okudaira 2007,https://www.ncbi.nlm.nih.gov/pubmed/17585116,EM 0 Control (Perpetrator Placebo),12,5.0,9,0.3-14.0,Aggregated,Fed
+362,Okudaira 2007,https://www.ncbi.nlm.nih.gov/pubmed/17585116,EM 2 with Perpetrator (Erythromycin),12,2.5,11,25.0-47.0,Aggregated,Fed
+363,Okudaira 2007,https://www.ncbi.nlm.nih.gov/pubmed/17585116,EM 4 with Perpetrator (Erythromycin),12,2.5,11,73.0-95.0,Aggregated,Fed
+364,Okudaira 2007,https://www.ncbi.nlm.nih.gov/pubmed/17585116,EM 7 with Perpetrator (Erythromycin),12,2.5,11,145.0-167.0,Aggregated,Fed
+365,Olkkola 1993,https://www.ncbi.nlm.nih.gov/pubmed/8453848,po Control (Perpetrator Placebo),12,15.0,12,0.0-18.0,Aggregated,Fasted
+366,Olkkola 1993,https://www.ncbi.nlm.nih.gov/pubmed/8453848,po with Perpetrator (Erythromycin),12,15.0,12,128.0-146.0,Aggregated,Fasted
+369,Olkkola 1994,https://www.ncbi.nlm.nih.gov/pubmed/8181191,po Control (Perpetrator Placebo),9,7.5,11,0.0-17.0,Aggregated,Fasted
+370,Olkkola 1994,https://www.ncbi.nlm.nih.gov/pubmed/8181191,po with Perpetrator (Itraconazole),9,7.5,11,73.0-90.0,Aggregated,Fasted
+371,Olkkola 1994,https://www.ncbi.nlm.nih.gov/pubmed/8181191,po with Perpetrator (Ketoconazole,9,7.5,11,73.0-90.0,Aggregated,Fasted
+374,Olkkola 1996,https://www.ncbi.nlm.nih.gov/pubmed/8623953,day 1 (po) Control (Perpetrator Placebo),12,7.5,11,0.0-17.0,Aggregated,Fasted
+376,Olkkola 1996,https://www.ncbi.nlm.nih.gov/pubmed/8623953,day 6 (po) Control (Perpetrator Placebo),12,7.5,11,0.0-17.0,Aggregated,Fasted
+377,Olkkola 1996,https://www.ncbi.nlm.nih.gov/pubmed/8623953,day 1 (po) with Perpetrator (Itraconazole),12,7.5,11,2.0-19.0,Aggregated,Fasted
+379,Olkkola 1996,https://www.ncbi.nlm.nih.gov/pubmed/8623953,day 6 (po) with Perpetrator (Itraconazole),12,7.5,11,122.0-139.0,Aggregated,Fasted
+380,Olkkola 1996,https://www.ncbi.nlm.nih.gov/pubmed/8623953,day 1 (po) with Perpetrator (Fluconazole),12,7.5,11,2.0-19.0,Aggregated,Fasted
+382,Olkkola 1996,https://www.ncbi.nlm.nih.gov/pubmed/8623953,day 6 (po) with Perpetrator (Fluconazole),12,7.5,11,122.0-139.0,Aggregated,Fasted
+392,Reitman 2011,https://www.ncbi.nlm.nih.gov/pubmed/21191377,Week 0 after Perpetrator (Rifampicin),11,2.0,3,649.0-652.0,Aggregated,Fasted
+393,Reitman 2011,https://www.ncbi.nlm.nih.gov/pubmed/21191377,Week 1 after Perpetrator (Rifampicin),11,2.0,4,817.0-822.0,Aggregated,Fasted
+394,Reitman 2011,https://www.ncbi.nlm.nih.gov/pubmed/21191377,Week 2 after Perpetrator (Rifampicin),11,2.0,5,985.0-992.0,Aggregated,Fasted
+395,Reitman 2011,https://www.ncbi.nlm.nih.gov/pubmed/21191377,Week 4 after Perpetrator (Rifampicin),11,2.0,6,1321.0-1332.0,Aggregated,Fasted
+400,Saari 2006,https://www.ncbi.nlm.nih.gov/pubmed/16580904,po Control (Perpetrator Placebo),10,7.5,8,0.5-8.0,Aggregated,Fasted
+401,Saari 2006,https://www.ncbi.nlm.nih.gov/pubmed/16580904,po with Perpetrator (Voriconazole),10,7.5,10,37.5-61.0,Aggregated,Fasted
+416,Smith 1981,https://www.ncbi.nlm.nih.gov/pubmed/6116606,oral solution 10 mg,6,10.0,13,0.1-8.0,Aggregated,Fasted
+417,Smith 1981,https://www.ncbi.nlm.nih.gov/pubmed/6116606,oral tablet 10 mg,6,10.0,11,0.2-8.0,Aggregated,Fasted
+423,Templeton 2010,https://www.ncbi.nlm.nih.gov/pubmed/20739919,Control (Perpetrator Placebo),6,2.0,9,0.5-20.0,Aggregated,
+424,Templeton 2010,https://www.ncbi.nlm.nih.gov/pubmed/20739919,with Perpetrator (Itraconazole @ 50 mg),6,2.0,9,4.5-24.0,Aggregated,
+425,Templeton 2010,https://www.ncbi.nlm.nih.gov/pubmed/20739919,with Perpetrator (Itraconazole @ 200 mg),6,2.0,9,4.5-24.0,Aggregated,
+426,Templeton 2010,https://www.ncbi.nlm.nih.gov/pubmed/20739919,with Perpetrator (Itraconazole @ 400 mg),6,2.0,9,4.5-24.0,Aggregated,
+468,Yeates 1996,http://www.ncbi.nlm.nih.gov/pubmed/8880291,Control (Perpetrator Placebo),12,15.0,10,0.5-24.0,Aggregated,Fasted
+469,Yeates 1996,http://www.ncbi.nlm.nih.gov/pubmed/8880291,with Perpetrator (Clarithromycin),12,15.0,10,98.0-121.5,Aggregated,Fasted
+470,Zimmermann 1996,https://www.ncbi.nlm.nih.gov/pubmed/8720318,Control (Perpetrator Placebo),12,15.0,9,0.5-12.0,Aggregated,Fasted
+471,Zimmermann 1996,https://www.ncbi.nlm.nih.gov/pubmed/8720318,with Perpetrator (Erythromycin),12,15.0,10,98.0-121.5,Aggregated,Fasted
+939,Kanefendt 2023,https://pubmed.ncbi.nlm.nih.gov/38105467/,"Study 1, midazolam alone",14,1.0,13,0.5-24.0,Aggregated,
+943,Kanefendt 2023,https://pubmed.ncbi.nlm.nih.gov/38105467/,"Study 1, midazolam after pretreatment with carbamazepine",14,1.0,12,334.5-350.0,Aggregated,
+1086,Lam 2003,https://www.ncbi.nlm.nih.gov/pubmed/14551182,Midazolam before Ketoconazole,10,10.0,6,0.5-8.0,Aggregated,fasted
+1087,Lam 2003,https://www.ncbi.nlm.nih.gov/pubmed/14551182,Midazolam after Ketoconazole,10,10.0,11,265.0-289.0,Aggregated,fasted
+1088,Lam 2003,https://www.ncbi.nlm.nih.gov/pubmed/14551182,Midazolam before Fluvoxamine,10,10.0,8,0.2-10.0,Aggregated,fasted
+1089,Lam 2003,https://www.ncbi.nlm.nih.gov/pubmed/14551182,Midazolam after Fluvoxamine,10,10.0,9,265.0-275.0,Aggregated,fasted
+1096,Prueksaritanont 2017,https://www.ncbi.nlm.nih.gov/pubmed/27943276,Midazolam in microdosecocktail alone,12,0.01,10,0.0-24.0,Aggregated,
+1097,Prueksaritanont 2017,https://www.ncbi.nlm.nih.gov/pubmed/27943276,Midazolam in microdosecocktail + Itraconazole,8,0.01,16,72.0-144.0,Aggregated,
+1098,Prueksaritanont 2017,https://www.ncbi.nlm.nih.gov/pubmed/27943276,Midazolam in microdosecocktail + Rifampin,8,0.01,11,0.0-16.0,Aggregated,
+1099,Prueksaritanont 2017,https://www.ncbi.nlm.nih.gov/pubmed/27943276,Midazolam in microdosecocktail + Clarithromycin,8,0.01,14,72.0-120.0,Aggregated,
+1107,Backman 1994,https://www.ncbi.nlm.nih.gov/pubmed/8198928,Midazolam with placebo,9,15.0,10,0.5-17.0,Aggregated,fasted
+1108,Backman 1994,https://www.ncbi.nlm.nih.gov/pubmed/8198928,Midazolam with verapamil,9,15.0,11,25.0-42.0,Aggregated,fasted
+1132,Kanefendt 2023,https://pubmed.ncbi.nlm.nih.gov/38105467/,"Study 2, midazolam alone",13,1.0,13,0.2-23.5,Aggregated,
+1133,Kanefendt 2023,https://pubmed.ncbi.nlm.nih.gov/38105467/,"Study 2, midazolam after pretreatment with carbamazepine",13,1.0,13,336.2-359.5,Aggregated,
+1320,Greenblatt 1986,https://pubmed.ncbi.nlm.nih.gov/2935051/,15 mg Midazolam PO control,6,15.0,12,0.5-10.0,Individual,Fasted
+1321,Greenblatt 1986,https://pubmed.ncbi.nlm.nih.gov/2935051/,"300 mg QD Cimetidine, 15 mg Midazolam PO",6,15.0,12,24.5-34.0,Individual,Fasted
+1323,Fee 1987,https://pubmed.ncbi.nlm.nih.gov/3802710/,15 mg Midazolam control,8,15.0,14,0.2-9.0,Aggregated,Fasted
+1324,Fee 1987,https://pubmed.ncbi.nlm.nih.gov/3802710/,"400 mg BID Cimetidine, 15 mg Midazolam",8,15.0,15,25.2-37.0,Aggregated,Fasted
+1325,Salonen 1986,https://pubmed.ncbi.nlm.nih.gov/2939688/,15 mg Midazolam PO control,6,15.0,10,0.0-5.0,Aggregated,
+1326,Salonen 1986,https://pubmed.ncbi.nlm.nih.gov/2939688/,"400 mg Cimetidine, 15 mg Midazolam",6,15.0,10,2.0-7.0,Aggregated,
+1345,Elliott 1984,https://pubmed.ncbi.nlm.nih.gov/6152615/,Midazolam/H2O,5,15.0,17,0.0-24.0,Aggregated,
+1346,Elliott 1984,https://pubmed.ncbi.nlm.nih.gov/6152615/,Midazolam/cimetidine,5,15.0,17,26.5-50.5,Aggregated,
+1348,Lutz 2018a,https://pubmed.ncbi.nlm.nih.gov/29569723/,"Cohort 1, Control",20,2.0,9,0.2-12.0,Aggregated,Fasted
+1349,Lutz 2018a,https://pubmed.ncbi.nlm.nih.gov/29569723/,"Cohort 2, Control",20,2.0,9,0.2-12.0,Aggregated,Fasted
+1350,Lutz 2018a,https://pubmed.ncbi.nlm.nih.gov/29569723/,"Cohort 2, 2 mg Rifampicin",20,2.0,9,228.2-240.0,Aggregated,Fasted
+1351,Lutz 2018a,https://pubmed.ncbi.nlm.nih.gov/29569723/,"Cohort 1, 10 mg Rifampicin",20,2.0,9,228.2-240.0,Aggregated,Fasted
+1352,Lutz 2018a,https://pubmed.ncbi.nlm.nih.gov/29569723/,"Cohort 1, 75 mg Rifampicin",20,2.0,7,660.2-664.0,Aggregated,Fasted
+1353,Lutz 2018a,https://pubmed.ncbi.nlm.nih.gov/29569723/,"Cohort 2, 600 mg Rifampicin",20,2.0,7,660.2-664.0,Aggregated,Fasted
+1361,Chattopadhyay 2018,https://pubmed.ncbi.nlm.nih.gov/30171692/,Control (without Rifampicin),11,1.0,15,0.5-24.0,Aggregated,
+1362,Chattopadhyay 2018,https://pubmed.ncbi.nlm.nih.gov/30171692/,with Perpetrator (Rifampicin),11,1.0,14,168.5-183.0,Aggregated,
+1391,Ahonen 1997,https://pubmed.ncbi.nlm.nih.gov/9049584/,Midazolam placebo,9,7.5,11,1.0-18.0,Aggregated,Fasted
+1392,Ahonen 1997,https://pubmed.ncbi.nlm.nih.gov/9049584/,Midazolam with perpetrator fluconazole i.v,9,7.5,11,1.0-18.0,Aggregated,Fasted
+1393,Ahonen 1997,https://pubmed.ncbi.nlm.nih.gov/9049584/,Midazolam with perpetrator fluconazole oral,9,7.5,11,1.0-18.0,Aggregated,Fasted
+1463,Datta-Mannan 2024,https://pubmed.ncbi.nlm.nih.gov/38864600/,Midazolam without carbamazepine,15,1.2,9,0.2-8.0,Aggregated,
+1465,Datta-Mannan 2024,https://pubmed.ncbi.nlm.nih.gov/38864600/,Midazolam with carbamazepine on Day 14,14,1.2,9,288.2-296.0,Aggregated,
+2000,van Dyk 2018,https://www.ncbi.nlm.nih.gov/pubmed/29572563,Midazolam in Caucasian at baseline ,19,1.0,8,15.0-360.0,Aggregated,
+2001,van Dyk 2018,https://www.ncbi.nlm.nih.gov/pubmed/29572563,Midazolam in South Asian at baseline,11,1.0,8,15.0-360.0,Aggregated,
+2040,Katzenmaier 2010,https://www.ncbi.nlm.nih.gov/pubmed/20680253,Midazolam control,12,3.0,12,0.2-10.0,Aggregated,fasted
+2041,Katzenmaier 2010,https://www.ncbi.nlm.nih.gov/pubmed/20680253,Midazolam + Efavirenz,12,3.0,9,336.2-340.0,Aggregated,fasted
+2042,Mikus 2017,https://www.ncbi.nlm.nih.gov/pubmed/28194792,Midazolam control PO,12,4.0,10,0.2-5.0,Aggregated,
+2044,Mikus 2017,https://www.ncbi.nlm.nih.gov/pubmed/28194792,Efavirenz + Midazolam PO day 1,12,4.0,11,12.2-18.0,Aggregated,
+16500,Mueller 2009,https://pubmed.ncbi.nlm.nih.gov/18762932/,Midazolam before St. John's Wort,20,7.5,15,0.2-12.0,Aggregated,fasted
+16501,Mueller 2009,https://pubmed.ncbi.nlm.nih.gov/18762932/,Midazolam after St. John's Wort,20,7.5,15,312.2-324.0,Aggregated,fasted
+16511,Hall 2003,https://pubmed.ncbi.nlm.nih.gov/14663455/,"Midazolam without Hyperforin, PO dosing",12,5.0,10,1.5-9.0,Aggregated,fed
+16513,Hall 2003,https://pubmed.ncbi.nlm.nih.gov/14663455/,"Midazolam with Hyperforin, PO dosing",12,5.0,11,529.0-537.0,Aggregated,fed
+16516,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam without hyperforin (group: LI 160),7,7.5,10,0.2-6.0,Aggregated,fasted
+16517,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam with hyperforin (group: LI 160),7,7.5,9,312.2-316.0,Aggregated,fasted
+16518,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam without hyperforin (group: Hypericum powder type B 2.7 g/day),7,7.5,11,0.2-8.0,Aggregated,fasted
+16519,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam with hyperforin (group: Hypericum powder type B 2.7 g/day),7,7.5,11,312.2-320.0,Aggregated,fasted
+16520,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam without hyperforin (group: Hypericum powder type A 2.7 g/day),7,7.5,10,0.2-6.0,Aggregated,fasted
+16521,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam with hyperforin (group: Hypericum powder type A 2.7 g/day),7,7.5,10,312.2-318.0,Aggregated,fasted
+16522,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam without hyperforin (group: Hypericum powder type A 1.8 g/day),7,7.5,9,0.5-6.0,Aggregated,fasted
+16523,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam with hyperforin (group: Hypericum powder type A 1.8 g/day),7,7.5,9,312.5-318.0,Aggregated,fasted
+16524,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam without hyperforin (group: Hypericum powder type A 1.2 g/day),7,7.5,10,0.2-6.0,Aggregated,fasted
+16525,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam with hyperforin (group: Hypericum powder type A 1.2 g/day),7,7.5,10,312.2-318.0,Aggregated,fasted
+16526,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam without hyperforin (group: Hypericum powder type A 0.6 g/day),7,7.5,11,0.2-8.0,Aggregated,fasted
+16527,Mueller 2006,https://pubmed.ncbi.nlm.nih.gov/16341856/,Midazolam with hyperforin (group: Hypericum powder type A 0.6 g/day),7,7.5,11,312.2-320.0,Aggregated,fasted
+16647,Zahner 2019,https://pubmed.ncbi.nlm.nih.gov/30739325/,Control day 1,20,1.0,14,0.2-16.0,Aggregated,
+16648,Zahner 2020,https://pubmed.ncbi.nlm.nih.gov/30739325/,day 8,20,1.0,15,168.2-184.0,Aggregated,
+16649,Zahner 2021,https://pubmed.ncbi.nlm.nih.gov/30739325/,day 17,20,1.0,15,384.2-400.0,Aggregated,
+17153,Sauer 2004,https://pubmed.ncbi.nlm.nih.gov/14610241/,ATO-MID-Control_day6,8,5.0,7,0.2-5.5,Aggregated,
+17154,Sauer 2004,https://pubmed.ncbi.nlm.nih.gov/14610241/,ATO-MID-DDI_day6,8,,8,120.8-128.0,Aggregated,
+17155,Sauer 2004,https://pubmed.ncbi.nlm.nih.gov/14610241/,ATO-MID-Control_day12,8,5.0,7,0.2-5.5,Aggregated,
+17156,Sauer 2004,https://pubmed.ncbi.nlm.nih.gov/14610241/,ATO-MID-DDI_day12,8,,7,264.8-270.0,Aggregated,
