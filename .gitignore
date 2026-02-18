@@ -221,3 +221,6 @@ kras-g12c-qsp-model/data/raw/
 
 # P10: exclude timestamped run logs (keep igut_sanity.txt)
 P10_static_ddi_framework/outputs/logs/run_*.log
+
+# P4: exclude timestamped run logs
+projects/04_poppk_anchor_midazolam_osp_calibrated/outputs/logs/run_*.log

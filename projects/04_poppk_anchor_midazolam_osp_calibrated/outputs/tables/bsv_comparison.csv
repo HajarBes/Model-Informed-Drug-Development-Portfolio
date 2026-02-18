@@ -1,0 +1,4 @@
+Parameter,Omega_base,Omega_cov,Reduction_pct
+eta.ka,0.2675,0.2682,-0.2
+eta.cl,0.0895,0.0836,6.6
+eta.v1,0.0279,0.0133,52.4

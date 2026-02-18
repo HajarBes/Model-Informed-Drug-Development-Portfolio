@@ -1,0 +1,16 @@
+=== PopPK Dose Recommendation ===
+
+Drug: Midazolam (oral)
+Context: Single-dose PK in healthy adults
+Model: 2-compartment, first-order absorption, allometric WT scaling
+
+Dosing scenarios evaluated: 5 mg, 7.5 mg, 15 mg
+Weight strata: 50 kg, 70 kg (reference), 100 kg
+
+RECOMMENDATION:
+Median AUCR marginally exceeds the 0.80-1.25 clinical relevance heuristic band for: High WT (100 kg), Low WT (50 kg) . However, individual variability from BSV in CL (~30% CV) substantially exceeds the weight effect at all strata. Whether dose modification is warranted depends on the therapeutic index in the specific clinical context.
+
+NOTE: This recommendation is based on simulated data calibrated to
+published midazolam PK. It demonstrates the PopPK-informed dose
+evaluation workflow and should not replace clinical decision-making.
+

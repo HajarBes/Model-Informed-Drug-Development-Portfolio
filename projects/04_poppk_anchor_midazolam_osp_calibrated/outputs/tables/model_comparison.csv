@@ -1,0 +1,3 @@
+Model,Parameters,OFV,AIC,Runtime_min
+1-compartment,5,3497.83,4800.35,1.3
+2-compartment,7,3027.15,4333.66,1.9

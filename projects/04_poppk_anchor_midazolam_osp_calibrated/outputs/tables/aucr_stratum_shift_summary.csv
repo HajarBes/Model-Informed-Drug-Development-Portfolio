@@ -1,0 +1,6 @@
+stratum,wt,median_auc,aucr_shift,aucr_theoretical,aucr_boot_lo,aucr_boot_hi,within_band
+50 kg (low),50,190.6,1.33,1.287,1.29,1.356,FALSE
+70 kg (reference),70,143.3,1,1,0.977,1.023,TRUE
+90 kg,90,123.6,0.862,0.828,0.837,0.879,TRUE
+100 kg,100,111.7,0.78,0.765,0.757,0.798,FALSE
+110 kg (high),110,104.8,0.732,0.712,0.707,0.748,FALSE

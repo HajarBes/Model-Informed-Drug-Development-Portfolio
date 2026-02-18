@@ -1,0 +1,10 @@
+scenario,dose_mg,stratum,wt,AUC_median,AUC_p5,AUC_p95,Cmax_median,Cmax_p5,Cmax_p95,Tmax_median
+15 mg (high dose),15,High WT (100 kg),100,223.9,134.9,382.5,111.4,66.6,167.8,0.5
+15 mg (high dose),15,Low WT (50 kg),50,377,227.2,642.5,210.6,120.8,325.9,0.5
+15 mg (high dose),15,Reference (70 kg),70,297.3,180.4,479.9,152.7,91.7,234,0.5
+5 mg (low dose),5,High WT (100 kg),100,76.1,47.1,122.8,37.3,22.5,57.7,0.6
+5 mg (low dose),5,Low WT (50 kg),50,127,80.3,209.8,70.9,41.2,109,0.5
+5 mg (low dose),5,Reference (70 kg),70,95.5,58.4,154,52,30.8,77.7,0.5
+7.5 mg (standard),7.5,High WT (100 kg),100,112.8,67.5,183.9,56.1,33.3,88.8,0.5
+7.5 mg (standard),7.5,Low WT (50 kg),50,187.7,114.7,306,103.8,59.4,166.1,0.5
+7.5 mg (standard),7.5,Reference (70 kg),70,147.3,86.1,240.1,77.3,45.5,117.9,0.5

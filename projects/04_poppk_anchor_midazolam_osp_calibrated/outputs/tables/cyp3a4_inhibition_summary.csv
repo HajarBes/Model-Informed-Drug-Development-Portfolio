@@ -1,0 +1,2 @@
+scenario,n,fc_median,fc_mean,fc_p5,fc_p95,auc_base_median,auc_inhib_median,pct_fc_above_2,pct_fc_above_5
+Strong CYP3A4 inhibition (50% CL reduction),1000,1.99,1.98,1.92,2.03,148.9,295.9,29.2,0
