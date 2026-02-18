@@ -1,4 +1,4 @@
-# P10: Static DDI Risk Assessment Framework
+# Static DDI Risk Assessment Framework
 
 **Mechanistic static model for drug-drug interaction screening per FDA 2020 guidance**
 
