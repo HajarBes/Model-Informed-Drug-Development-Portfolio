@@ -19,7 +19,7 @@ if (!file.exists(file.path(PROJECT_ROOT, "data", "inputs_midazolam_case.csv"))) 
   candidates <- c(
     file.path(Sys.getenv("HOME"), "Desktop",
               "Model-Informed-Drug-Development-Portfolio",
-              "P10_static_ddi_framework"),
+              "P10-static-ddi-framework"),
     dirname(getwd())
   )
   for (p in candidates) {

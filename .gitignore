@@ -212,7 +212,7 @@ __marimo__/
 # Don't publish copyrighted PDFs / large binaries
 **/*.pdf
 data/raw/
-kras-g12c-qsp-model/data/raw/
+P1-kras-g12c-qsp-model/data/raw/
 
 # R intermediate / binary files
 *.rds
@@ -220,7 +220,7 @@ kras-g12c-qsp-model/data/raw/
 *.Rhistory
 
 # P10: exclude timestamped run logs (keep igut_sanity.txt)
-P10_static_ddi_framework/outputs/logs/run_*.log
+P10-static-ddi-framework/outputs/logs/run_*.log
 
 # P4: exclude timestamped run logs
-poppk-midazolam-cyp3a4-probe/outputs/logs/run_*.log
+P4-poppk-midazolam-cyp3a4-probe/outputs/logs/run_*.log
