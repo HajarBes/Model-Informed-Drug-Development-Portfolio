@@ -8,7 +8,7 @@ This repository showcases quantitative systems pharmacology (QSP) and model-info
 
 ## Projects
 
-### [P1 — KRAS G12C QSP Model](P1-kras-g12c-qsp-model/)
+### [KRAS G12C QSP Model](01-KRAS-G12C-qsp-model/)
 
 A 9-state ODE model explaining why sotorasib (LUMAKRAS) achieves durable responses in NSCLC but not in CRC, and how EGFR blockade (panitumumab) rescues CRC outcomes through combination therapy.
 
@@ -22,7 +22,7 @@ A 9-state ODE model explaining why sotorasib (LUMAKRAS) achieves durable respons
 
 ---
 
-### [P4 — Population PK of Oral Midazolam](P4-poppk-midazolam-cyp3a4-probe/)
+### [POPPK — Oral Midazolam CYP3A4 Probe](02-POPPK-midazolam-cyp3a4-probe/)
 
 Population pharmacokinetic analysis of the standard CYP3A4 probe substrate (7.5 mg, N=120), with parameters calibrated to the OSP Midazolam PBPK model (40+ clinical studies).
 
@@ -30,13 +30,13 @@ Population pharmacokinetic analysis of the standard CYP3A4 probe substrate (7.5 
 - 2-compartment SAEM estimation (nlmixr2/rxode2), dAIC = 467 vs 1-compartment
 - Allometric weight scaling with verified exposure analysis and bootstrap CIs
 - Production diagnostics: GOF, VPC, eta distributions, individual fits, forest plot
-- CYP3A4 inhibition bridge connecting baseline PK to DDI risk (P10)
+- CYP3A4 inhibition bridge connecting baseline PK to DDI risk
 
 **Tools:** R, nlmixr2, rxode2 | **Domain:** Clinical Pharmacology, PopPK, DDI
 
 ---
 
-### [P10 — Static DDI Risk Assessment](P10-static-ddi-framework/)
+### [Static DDI Risk Assessment](03-static-DDI-framework/)
 
 Drug-drug interaction screening per FDA 2020 guidance and ICH M12 (2024), with two cases: ketoconazole benchmark validation and sotorasib multi-mechanism perpetrator analysis.
 

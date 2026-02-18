@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # Usage:
-#   cd P10-static-ddi-framework
+#   cd 03-static-DDI-framework
 #   bash run_all.sh
 #
 # Prerequisites:

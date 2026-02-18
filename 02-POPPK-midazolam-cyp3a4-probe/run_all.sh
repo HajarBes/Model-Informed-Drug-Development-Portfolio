@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # Usage:
-#   cd P4-poppk-midazolam-cyp3a4-probe
+#   cd 02-POPPK-midazolam-cyp3a4-probe
 #   bash run_all.sh
 #
 # Prerequisites:

@@ -114,7 +114,7 @@ static DDI predictions.
 ## Quick Start
 
 ```bash
-cd P4-poppk-midazolam-cyp3a4-probe
+cd 02-POPPK-midazolam-cyp3a4-probe
 bash run_all.sh    # 7 scripts, ~10 min total
 ```
 
@@ -124,7 +124,7 @@ nlmixr2/rxode2.
 ## Project Structure
 
 ```
-P4-poppk-midazolam-cyp3a4-probe/
+02-POPPK-midazolam-cyp3a4-probe/
 ├── run_all.sh                              # Single reproducible entrypoint
 ├── analysis/
 │   ├── 00_setup.R                          # Packages, paths, true parameters

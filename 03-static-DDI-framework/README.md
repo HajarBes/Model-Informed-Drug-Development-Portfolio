@@ -16,14 +16,14 @@ Two cases demonstrate the framework:
 ## Quick Start
 
 ```bash
-cd P10-static-ddi-framework
+cd 03-static-DDI-framework
 bash run_all.sh
 ```
 
 ## Project Structure
 
 ```
-P10-static-ddi-framework/
+03-static-DDI-framework/
 ├── README.md
 ├── run_all.sh                          # One-command pipeline execution
 ├── data/
