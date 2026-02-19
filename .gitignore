@@ -222,7 +222,7 @@ data/raw/
 # Exclude timestamped run logs
 03-static-DDI-framework/outputs/logs/run_*.log
 02-POPPK-midazolam-cyp3a4-probe/outputs/logs/run_*.log
-05-PBBM-oral-absorption-felodipine/outputs/logs/run_*.log
+04-PBBM-oral-absorption-felodipine/outputs/logs/run_*.log
 
 # OSP observed-data xlsx (4.7 MB) — too large for git; download via extraction script
 02-POPPK-midazolam-cyp3a4-probe/data/literature_osp_midazolam/raw/*.xlsx

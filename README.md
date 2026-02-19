@@ -51,7 +51,7 @@ Drug-drug interaction screening per FDA 2020 guidance and ICH M12 (2024), with t
 
 ---
 
-### [PBBM Oral Absorption — Felodipine](05-PBBM-oral-absorption-felodipine/)
+### [PBBM Oral Absorption — Felodipine](04-PBBM-oral-absorption-felodipine/)
 
 Physiologically based biopharmaceutics model (PBBM) for felodipine (BCS Class II), predicting fasted/fed-state oral absorption from biopharmaceutic first principles and qualifying against 22 published clinical studies (442 data points from the OSP Database).
 

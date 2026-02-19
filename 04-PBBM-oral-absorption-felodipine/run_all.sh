@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # Usage:
-#   cd 05-PBBM-oral-absorption-felodipine
+#   cd 04-PBBM-oral-absorption-felodipine
 #   bash run_all.sh
 #
 # Prerequisites:
