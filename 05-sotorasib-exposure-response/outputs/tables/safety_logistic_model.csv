@@ -1,0 +1,4 @@
+parameter,coefficient,std_err,z_value,p_value,or
+const,-3.3775,0.15087,-22.386,0.0,0.0341
+cmax_ss,0.07684,0.00914,8.406,0.0,1.0799
+prior_cpi,1.70812,0.12449,13.721,0.0,5.5185

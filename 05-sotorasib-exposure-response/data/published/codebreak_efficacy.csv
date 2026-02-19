@@ -1,0 +1,7 @@
+dose_mg,n,orr_pct,source,phase
+180,3,33.0,CodeBreaK 100 Phase 1,1
+360,16,25.0,CodeBreaK 100 Phase 1,1
+720,6,50.0,CodeBreaK 100 Phase 1,1
+960,34,47.0,CodeBreaK 100 Phase 1,1
+960,124,36.0,CodeBreaK 100 Phase 2 (BICR),2
+240,105,24.8,Dose comparison (EJC 2024),comparison

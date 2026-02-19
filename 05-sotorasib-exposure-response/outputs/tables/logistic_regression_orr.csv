@@ -1,0 +1,3 @@
+parameter,coefficient,std_err,z_value,p_value,or
+const,-0.96354,0.06857,-14.052,0.0,0.3815
+auc_ss,0.00182,0.00055,3.323,0.0009,1.0018

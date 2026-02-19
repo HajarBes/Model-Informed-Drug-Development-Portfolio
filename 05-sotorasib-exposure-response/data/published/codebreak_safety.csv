@@ -1,0 +1,7 @@
+dose_mg,endpoint,grade,rate_pct,source
+960,hepatotoxicity,3+,16.0,Pooled CodeBreaK
+240,hepatotoxicity,3+,14.0,Dose comparison (EJC 2024)
+960,diarrhea,all,39.4,Dose comparison (EJC 2024)
+240,diarrhea,all,31.7,Dose comparison (EJC 2024)
+960,hepatotoxicity_cpi_le30d,3+,75.0,FDA review (prior CPI ≤30 days)
+960,hepatotoxicity_cpi_gt90d,3+,0.0,FDA review (prior CPI >90 days)

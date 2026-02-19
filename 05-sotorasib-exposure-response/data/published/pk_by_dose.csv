@@ -1,0 +1,6 @@
+dose_mg,cmax_ugml,auc0_24h_ugml_hr,source,timepoint
+180,6.44,31.7,FDA review,Day 8
+360,6.31,38.9,FDA review,Day 8
+720,5.45,42.1,FDA review,Day 8
+960,5.39,32.4,FDA review,Day 8
+960,7.50,65.3,FDA label,Steady state

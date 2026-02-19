@@ -14,6 +14,7 @@ End-to-end quantitative pharmacology projects — from mechanistic ODE systems t
 | 02 | [Midazolam PopPK](#02--population-pk--oral-midazolam) | 2-cpt SAEM (nlmixr2) | 11/12 studies within 2-fold | Clinical Pharmacology |
 | 03 | [Static DDI Framework](#03--static-ddi-risk-assessment) | Mechanistic static model | Dual TDI + induction resolved | Drug-Drug Interactions |
 | 04 | [PBBM Felodipine](#04--pbbm-oral-absorption--felodipine) | 17-state ACAT | 9/9 IR arms within 2-fold | Biopharmaceutics |
+| 05 | [Sotorasib E-R](#05--sotorasib-exposure-response--dose-optimization) | E-R logistic + dose optimization | Flat E-R (saturable absorption) | Oncology Dose Selection |
 
 ---
 
@@ -128,14 +129,43 @@ Mechanistic static model implementing FDA 2020 DDI guidance equations for revers
 
 ---
 
+## 05 | Sotorasib Exposure-Response & Dose Optimization
+
+> **Saturable absorption compresses sotorasib exposure across 180–960 mg — does the E-R data justify dose optimization?**
+
+Exposure-response analysis for the FDA dose optimization debate. Saturable absorption creates a pharmacokinetic ceiling — AUCss barely changes from 180 to 960 mg. Emax logistic model for ORR, Cmax-driven hepatotoxicity with CPI interaction, and benefit-risk dashboard across all dose levels. Virtual population (N=2,500) calibrated to published clinical data.
+
+<p align="center">
+  <img src="05-sotorasib-exposure-response/figures/dose_vs_exposure_vs_response.png" width="100%" alt="Dose-Exposure-Response chain"/>
+</p>
+<p align="center"><i>The dose-response chain breaks at Dose → Exposure: saturable absorption means dose escalation doesn't increase exposure, so response is flat.</i></p>
+
+<p align="center">
+  <img src="05-sotorasib-exposure-response/figures/benefit_risk_overlay.png" width="60%" alt="Benefit-risk overlay"/>
+</p>
+<p align="center"><i>Benefit-risk overlay: all dose levels cluster in a similar ORR vs hepatotoxicity region. Published values (diamonds) and simulated values (circles) are concordant.</i></p>
+
+**Key Results:**
+- Flat dose-exposure: AUCss ~64–85 hr·µg/mL across 180–960 mg (5.3-fold dose range)
+- Flat ORR (~30%) across all doses — driven by compressed exposure, not drug inactivity
+- Hepatotoxicity: Cmax-driven + prior CPI interaction (3x risk elevation); Q1→Q4 gradient 8%→27%
+- Dose optimization: overlapping benefit-risk profiles; dose-optimization study justified
+- Completes sotorasib trilogy: QSP (01) → DDI (03) → E-R (05)
+
+**Tools:** Python, statsmodels, SciPy | **Regulatory:** FDA E-R Guidance, ICH E4, Project Optimus
+
+[View Project &rarr;](05-sotorasib-exposure-response/)
+
+---
+
 ## Technical Scope
 
 | Category | Coverage |
 |----------|----------|
-| **Modeling** | ODE systems (QSP, ACAT), population PK (NLME/SAEM), mechanistic static DDI, PBPK/PBBM |
-| **Analysis** | Global sensitivity (Morris), virtual populations (LHS), Monte Carlo, virtual bioequivalence |
-| **Languages** | Python (NumPy, SciPy, pandas, matplotlib, SALib), R (nlmixr2, rxode2, ggplot2) |
-| **Regulatory** | ICH M15, ICH M12, FDA PopPK (2022), FDA DDI (2020), FDA PBBM (2023), EMA PBPK |
+| **Modeling** | ODE systems (QSP, ACAT), population PK (NLME/SAEM), mechanistic static DDI, PBPK/PBBM, exposure-response (logistic, Emax) |
+| **Analysis** | Global sensitivity (Morris), virtual populations (LHS), Monte Carlo, virtual bioequivalence, dose optimization (benefit-risk) |
+| **Languages** | Python (NumPy, SciPy, pandas, matplotlib, SALib, statsmodels), R (nlmixr2, rxode2, ggplot2) |
+| **Regulatory** | ICH M15, ICH M12, ICH E4, FDA PopPK (2022), FDA DDI (2020), FDA PBBM (2023), FDA E-R (2003/2023), EMA PBPK, Project Optimus |
 | **Data** | OSP Database for Observed Data, published clinical studies, PubChem, DrugBank |
 | **Workflow** | Reproducible pipelines (`run_all.sh`), regulatory-style reports, version-controlled outputs |
 
@@ -148,6 +178,8 @@ Mechanistic static model implementing FDA 2020 DDI guidance equations for revers
 - **FDA Population Pharmacokinetics Guidance** (2022)
 - **FDA In Vitro Drug Interaction Studies Guidance** (2020)
 - **FDA PBBM Draft Guidance** for oral drug products (2023)
+- **FDA Exposure-Response Relationships** — Guidance for Industry (2003/2023)
+- **ICH E4** — Dose-response information to support drug registration
 - **EMA Guideline on Reporting of PBPK Modelling and Simulation**
 
 ---
@@ -159,7 +191,8 @@ Model-Informed-Drug-Development-Portfolio/
 ├── 01-KRAS-G12C-qsp-model/          # QSP: adaptive resistance in oncology
 ├── 02-POPPK-midazolam-cyp3a4-probe/ # PopPK: CYP3A4 probe + external qualification
 ├── 03-static-DDI-framework/         # DDI: multi-mechanism risk assessment
-└── 04-PBBM-oral-absorption-felodipine/ # PBBM: oral absorption + food effect
+├── 04-PBBM-oral-absorption-felodipine/ # PBBM: oral absorption + food effect
+└── 05-sotorasib-exposure-response/  # E-R: dose optimization + benefit-risk
 ```
 
 Each project is self-contained with its own `README.md`, `run_all.sh`, analysis scripts, figures, output tables, and regulatory-style report documents.

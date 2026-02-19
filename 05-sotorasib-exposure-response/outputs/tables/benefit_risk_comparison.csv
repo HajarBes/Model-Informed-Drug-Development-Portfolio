@@ -1,0 +1,11 @@
+metric,dose_240mg,dose_960mg
+GM AUCss (hr*ug/mL),73.2,65.5
+"GM Cmax,ss (ug/mL)",8.88,7.71
+ORR (%),29.8,30.0
+Grade 3+ Hepatotox (%),16.2,15.4
+Therapeutic Index,1.84,1.95
+NNT,3.4,3.3
+NNH,6.2,6.5
+Net Clinical Benefit (%),13.6,14.6
+Published ORR (%),24.8,32.7
+Published PFS (months),5.6,5.4

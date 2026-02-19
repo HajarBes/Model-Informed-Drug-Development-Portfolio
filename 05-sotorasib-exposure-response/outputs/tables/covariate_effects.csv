@@ -1,0 +1,17 @@
+covariate,subgroup,n,gm_auc,ratio,ci_lo_90,ci_hi_90,ci_excludes_1
+Body Weight,50 kg,54,66.9,1.022,0.871,1.154,No
+Body Weight,70 kg,200,65.7,1.003,0.931,1.075,No
+Body Weight,90 kg,198,62.8,0.959,0.93,1.083,No
+Body Weight,100 kg,82,63.2,0.966,0.891,1.121,No
+ECOG Status,ECOG 0,172,67.1,1.025,0.951,1.106,Ref
+ECOG Status,ECOG 1,245,55.1,0.841,0.787,0.903,Yes
+ECOG Status,ECOG 2,83,50.8,0.776,0.705,0.865,Yes
+Albumin,Normal (>3.5),370,65.3,0.997,0.942,1.051,Ref
+Albumin,Low (<=3.5),130,52.9,0.807,0.737,0.885,Yes
+Prior CPI,No prior CPI,294,65.8,1.006,0.949,1.062,No
+Prior CPI,Prior CPI,206,64.9,0.992,0.922,1.07,No
+Renal Function,Normal (>90),250,62.6,0.957,0.898,1.026,No
+Renal Function,Mild (60-89),175,66.9,1.021,0.944,1.112,No
+Renal Function,Moderate (30-59),75,72.3,1.104,0.985,1.23,No
+Hepatic Function,Normal,350,65.8,1.005,0.954,1.06,No
+Hepatic Function,Mild Impairment,150,72.3,1.104,1.023,1.192,Yes
