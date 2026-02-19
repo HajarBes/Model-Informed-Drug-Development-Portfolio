@@ -1,0 +1,2 @@
+fed_study_id,fed_study_label,fed_formulation,fed_Cmax_DN,fed_AUC_DN,fed_Tmax,fasted_reference,fasted_Cmax_DN_median,fasted_AUC_DN_median,fasted_Tmax_median,Cmax_ratio,AUC_ratio,Tmax_shift_h
+16030,Bratel 1989,IR,8.16,35.946,1.0,median of 7 IR arms,6.245,30.996,1.0,1.307,1.16,0.0

@@ -1,0 +1,6 @@
+metric,N_studies,median,IQR_low,IQR_high,min,max,literature_reference
+Cmax_ratio,1.0,1.307,1.307,1.307,1.307,1.307,FDA PLENDIL label; Lundahl 1998
+AUC_ratio,1.0,1.16,1.16,1.16,1.16,1.16,FDA PLENDIL label; Lundahl 1998
+Tmax_shift_h,1.0,0.0,0.0,0.0,0.0,0.0,FDA PLENDIL label; Lundahl 1998
+Cmax_ratio_literature,,1.6,,,,,FDA PLENDIL label: Cmax +60%
+AUC_ratio_literature,,1.0,,,,,FDA PLENDIL label: AUC unchanged

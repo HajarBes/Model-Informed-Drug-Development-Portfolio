@@ -1,0 +1,32 @@
+study_id,study_label,reference,grouping,n,dose_mg,n_timepoints,time_range_h,prandial,is_control
+16000,Lundahl 1997,https://pubmed.ncbi.nlm.nih.gov/9174684/,10mg-PO ER tablet,12,10.0,16,0.0-24.0,fasted,True
+16002,Edgar 1987,https://pubmed.ncbi.nlm.nih.gov/3327676/,10mg-PO solution,12,10.0,13,0.0-12.0,unknown,True
+16003,Edgar 1987,https://pubmed.ncbi.nlm.nih.gov/3327676/,10mg-PO IR tablet,12,10.0,15,0.0-12.0,unknown,True
+16004,Edgar 1987,https://pubmed.ncbi.nlm.nih.gov/3327676/,10mg-PO ER tablet,12,10.0,12,0.3-12.0,unknown,True
+16005,Bailey 1996,https://pubmed.ncbi.nlm.nih.gov/8689808/,"Erythromycin DDI, control group",12,10.0,12,0.0-24.0,fasted,True
+16006,Jalava 1997,https://pubmed.ncbi.nlm.nih.gov/9129558/,"Itraconazole DDI, control group",9,5.0,12,0.0-32.0,fasted,True
+16007,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study I-10mg-PO solution,18,10.0,14,120.0-132.0,unknown,True
+16008,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study I-10mg-PO IR tablet-trial,18,10.0,14,120.0-132.0,unknown,True
+16009,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study I-10mg-PO IR tablet-market,18,10.0,14,120.0-132.0,unknown,True
+16010,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study II-10mg-PO IR tablet-market,15,10.0,14,120.0-144.0,unknown,True
+16011,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study II-10mg-PO ER tablet-trial,15,10.0,12,120.3-144.0,unknown,True
+16012,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study II-10mg-PO ER tablet-market,15,10.0,11,120.3-144.0,unknown,True
+16014,Bailey 2003,https://pubmed.ncbi.nlm.nih.gov/12811362/,10mg-PO ER tablet,8,10.0,11,0.0-8.0,fasted,True
+16015,Bailey 2000,https://pubmed.ncbi.nlm.nih.gov/11103749/,10mg-PO ER tablet,12,10.0,11,0.0-8.0,fasted,True
+16016,Bailey 1998,https://pubmed.ncbi.nlm.nih.gov/9757148/,10mg-PO ER tablet,12,10.0,13,0.0-12.0,fasted,True
+16017,Guo 2007 ,https://pubmed.ncbi.nlm.nih.gov/17691921/,10mg-PO ER tablet,12,10.0,10,0.5-12.0,fasted,True
+16018,Dresser 2002,https://pubmed.ncbi.nlm.nih.gov/12235445/,10mg-PO ER tablet,11,10.0,11,0.0-8.0,fasted,True
+16019,Smith 1987,https://pubmed.ncbi.nlm.nih.gov/3830242/,10mg-PO IR tablet,8,10.0,10,96.0-108.0,fasted,True
+16020,Madsen 1996,https://pubmed.ncbi.nlm.nih.gov/8737760/,10mg-PO ER tablet,12,10.0,14,0.5-48.0,fasted,True
+16021,Lundahl 1998,https://pubmed.ncbi.nlm.nih.gov/9591935/,10mg-PO ER tablet,12,10.0,34,0.0-336.0,fasted,True
+16022,Dresser 2017,https://pubmed.ncbi.nlm.nih.gov/28971609/,10mg-PO ER tablet,5,10.0,13,0.0-8.0,fasted,True
+16023,Bailey 1995,https://pubmed.ncbi.nlm.nih.gov/8562295/,10mg-PO ER tablet,12,10.0,12,0.0-24.0,fasted,True
+16024,Aberg 1997,https://pubmed.ncbi.nlm.nih.gov/9342583/,10mg-PO ER tablet,36,10.0,17,144.0-168.0,fasted,True
+16025,Dresser 2000,https://pubmed.ncbi.nlm.nih.gov/10945313/,5mg-PO ER tablet,12,5.0,12,0.0-24.0,fasted,True
+16026,Dresser 2000,https://pubmed.ncbi.nlm.nih.gov/10945313/,"2.5mg,5mg-PO ER tablet",6,,12,168.0-192.0,fasted,True
+16027,Bailey 1993,https://pubmed.ncbi.nlm.nih.gov/8513655/,5mg-PO IR tablet,9,5.0,11,0.0-8.0,fasted,True
+16028,Goosen 2004,https://pubmed.ncbi.nlm.nih.gov/15592332/,5mg-PO ER tablet,11,5.0,14,0.0-24.0,fasted,True
+16029,Edgar 1992,https://pubmed.ncbi.nlm.nih.gov/1577050/,5mg-PO IR tablet,9,5.0,11,0.0-8.0,fasted,True
+16030,Bratel 1989,https://pubmed.ncbi.nlm.nih.gov/2753066/,5mg-PO IR tablet,11,5.0,9,72.0-80.0,fed,True
+16062,Bailey 1996,https://pubmed.ncbi.nlm.nih.gov/8689808/,"Erythromycin DDI, treatment group",12,10.0,12,24.0-48.0,fasted,False
+16063,Jalava 1997,https://pubmed.ncbi.nlm.nih.gov/9129558/,"Itraconazole DDI, treatment group",9,5.0,12,73.0-105.0,fasted,False

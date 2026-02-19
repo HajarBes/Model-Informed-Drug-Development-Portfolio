@@ -1,0 +1,6 @@
+component,mass_mg,pct_dose
+Dose administered,10.0,100.0
+Absorbed through intestinal wall,9.7143,97.14
+Remaining undissolved (GI),0.0007,0.01
+Remaining dissolved (GI),0.0001,0.0
+Fecal transit loss,0.2849,2.85

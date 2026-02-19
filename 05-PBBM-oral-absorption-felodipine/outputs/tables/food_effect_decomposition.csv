@@ -1,0 +1,5 @@
+mechanism,label,Cmax_ngmL,Cmax_change_pct,AUC_ngmL_h,AUC_change_pct,Tmax_h
+gastric_emptying,Delayed Gastric Emptying,7.16,-20.0,33.39,0.2,1.14
+bile_salts,Increased Bile Salts,14.28,59.6,34.47,3.5,0.81
+gastric_pH,Elevated Gastric pH,8.24,-7.9,33.14,-0.5,0.7
+all_fed,All Fed Changes,11.76,31.5,34.44,3.4,1.05

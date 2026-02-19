@@ -1,0 +1,5 @@
+parameter,fasted,fed,ratio_fed_fasted,literature_ratio
+Cmax_ngmL,8.95,11.76,1.315,IR: ~1.31 (Bratel 1989); ER: ~1.6
+AUC_ngmL_h,33.31,34.44,1.034,~1.0
+Tmax_h,0.62,1.05,1.694,increased
+Fa,0.971,1.0,1.029,increased

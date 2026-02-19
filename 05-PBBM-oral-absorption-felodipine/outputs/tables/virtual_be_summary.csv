@@ -1,0 +1,5 @@
+test_formulation,metric,GMR,CI90_lower,CI90_upper,within_80_125,n_subjects
+micronized,Cmax,1.2594,1.2459,1.2732,False,200
+micronized,AUC,1.0524,1.0477,1.057,True,200
+coarser,Cmax,0.9351,0.9317,0.9385,True,200
+coarser,AUC,0.8312,0.8255,0.8368,True,200

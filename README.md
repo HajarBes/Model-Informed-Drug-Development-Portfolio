@@ -48,3 +48,18 @@ Drug-drug interaction screening per FDA 2020 guidance and ICH M12 (2024), with t
 - Regulatory-style case reports with full mathematical derivations
 
 **Tools:** R | **Domain:** Clinical Pharmacology, Drug-Drug Interactions, Regulatory Science
+
+---
+
+### [PBBM Oral Absorption — Felodipine](05-PBBM-oral-absorption-felodipine/)
+
+Physiologically based biopharmaceutics model (PBBM) for felodipine (BCS Class II), predicting fasted/fed-state oral absorption from biopharmaceutic first principles and qualifying against 22 published clinical studies (442 data points from the OSP Database).
+
+**Highlights:**
+- 7-segment ACAT model (16 ODEs) with Noyes-Whitney dissolution and Peff-driven absorption
+- Food effect prediction from mechanistic knobs: bile salts, gastric emptying, gastric pH
+- Morris global sensitivity analysis identifying S₀, bile factors, and Fg/Fh as top exposure drivers
+- Virtual bioequivalence analysis linking particle size to systemic exposure
+- Qualification against real published clinical data (OSP database, control arms only)
+
+**Tools:** Python, SciPy, SALib | **Domain:** Biopharmaceutics, Oral Absorption, PBBM, BCS Class II

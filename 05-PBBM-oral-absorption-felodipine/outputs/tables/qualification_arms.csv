@@ -1,0 +1,32 @@
+study_id,study_label,reference,grouping,formulation,dose_mg,n_subjects,n_timepoints,prandial,is_control,is_multidose,model_comparable_IR,in_database,in_qualification_set,exclusion_reason
+16000,Lundahl 1997,https://pubmed.ncbi.nlm.nih.gov/9174684/,10mg-PO ER tablet,ER,10.0,12,16,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16002,Edgar 1987,https://pubmed.ncbi.nlm.nih.gov/3327676/,10mg-PO solution,solution,10.0,12,13,unknown,True,False,True,True,True,—
+16003,Edgar 1987,https://pubmed.ncbi.nlm.nih.gov/3327676/,10mg-PO IR tablet,IR,10.0,12,15,unknown,True,False,True,True,True,—
+16004,Edgar 1987,https://pubmed.ncbi.nlm.nih.gov/3327676/,10mg-PO ER tablet,ER,10.0,12,12,unknown,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16005,Bailey 1996,https://pubmed.ncbi.nlm.nih.gov/8689808/,"Erythromycin DDI, control group",ER,10.0,12,12,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16006,Jalava 1997,https://pubmed.ncbi.nlm.nih.gov/9129558/,"Itraconazole DDI, control group",unknown,5.0,9,12,fasted,True,False,False,True,False,—
+16007,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study I-10mg-PO solution,solution,10.0,18,14,unknown,True,True,True,True,True,Multi-dose study (time offset > 48 h)
+16008,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study I-10mg-PO IR tablet-trial,IR,10.0,18,14,unknown,True,True,True,True,True,Multi-dose study (time offset > 48 h)
+16009,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study I-10mg-PO IR tablet-market,IR,10.0,18,14,unknown,True,True,True,True,True,Multi-dose study (time offset > 48 h)
+16010,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study II-10mg-PO IR tablet-market,IR,10.0,15,14,unknown,True,True,True,True,True,Multi-dose study (time offset > 48 h)
+16011,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study II-10mg-PO ER tablet-trial,ER,10.0,15,12,unknown,True,True,False,True,False,Multi-dose study (time offset > 48 h); ER formulation — not directly comparable to IR ACAT model
+16012,Blychert 1990,https://pubmed.ncbi.nlm.nih.gov/2404502/,Study II-10mg-PO ER tablet-market,ER,10.0,15,11,unknown,True,True,False,True,False,Multi-dose study (time offset > 48 h); ER formulation — not directly comparable to IR ACAT model
+16014,Bailey 2003,https://pubmed.ncbi.nlm.nih.gov/12811362/,10mg-PO ER tablet,ER,10.0,8,11,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16015,Bailey 2000,https://pubmed.ncbi.nlm.nih.gov/11103749/,10mg-PO ER tablet,ER,10.0,12,11,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16016,Bailey 1998,https://pubmed.ncbi.nlm.nih.gov/9757148/,10mg-PO ER tablet,ER,10.0,12,13,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16017,Guo 2007 ,https://pubmed.ncbi.nlm.nih.gov/17691921/,10mg-PO ER tablet,ER,10.0,12,10,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16018,Dresser 2002,https://pubmed.ncbi.nlm.nih.gov/12235445/,10mg-PO ER tablet,ER,10.0,11,11,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16019,Smith 1987,https://pubmed.ncbi.nlm.nih.gov/3830242/,10mg-PO IR tablet,IR,10.0,8,10,fasted,True,True,True,True,True,Multi-dose study (time offset > 48 h)
+16020,Madsen 1996,https://pubmed.ncbi.nlm.nih.gov/8737760/,10mg-PO ER tablet,ER,10.0,12,14,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16021,Lundahl 1998,https://pubmed.ncbi.nlm.nih.gov/9591935/,10mg-PO ER tablet,ER,10.0,12,34,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16022,Dresser 2017,https://pubmed.ncbi.nlm.nih.gov/28971609/,10mg-PO ER tablet,ER,10.0,5,13,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16023,Bailey 1995,https://pubmed.ncbi.nlm.nih.gov/8562295/,10mg-PO ER tablet,ER,10.0,12,12,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16024,Aberg 1997,https://pubmed.ncbi.nlm.nih.gov/9342583/,10mg-PO ER tablet,ER,10.0,36,17,fasted,True,True,False,True,False,Multi-dose study (time offset > 48 h); ER formulation — not directly comparable to IR ACAT model
+16025,Dresser 2000,https://pubmed.ncbi.nlm.nih.gov/10945313/,5mg-PO ER tablet,ER,5.0,12,12,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16026,Dresser 2000,https://pubmed.ncbi.nlm.nih.gov/10945313/,"2.5mg,5mg-PO ER tablet",ER,,6,12,fasted,True,True,False,True,False,Multi-dose study (time offset > 48 h); ER formulation — not directly comparable to IR ACAT model
+16027,Bailey 1993,https://pubmed.ncbi.nlm.nih.gov/8513655/,5mg-PO IR tablet,IR,5.0,9,11,fasted,True,False,True,True,True,—
+16028,Goosen 2004,https://pubmed.ncbi.nlm.nih.gov/15592332/,5mg-PO ER tablet,ER,5.0,11,14,fasted,True,False,False,True,False,ER formulation — not directly comparable to IR ACAT model
+16029,Edgar 1992,https://pubmed.ncbi.nlm.nih.gov/1577050/,5mg-PO IR tablet,IR,5.0,9,11,fasted,True,False,True,True,True,—
+16030,Bratel 1989,https://pubmed.ncbi.nlm.nih.gov/2753066/,5mg-PO IR tablet,IR,5.0,11,9,fed,True,True,True,True,False,Multi-dose study (time offset > 48 h)
+16062,Bailey 1996,https://pubmed.ncbi.nlm.nih.gov/8689808/,"Erythromycin DDI, treatment group",ER,10.0,12,12,fasted,False,False,False,False,False,DDI perpetrator co-administration arm; ER formulation — not directly comparable to IR ACAT model
+16063,Jalava 1997,https://pubmed.ncbi.nlm.nih.gov/9129558/,"Itraconazole DDI, treatment group",unknown,5.0,9,12,fasted,False,True,False,False,False,DDI perpetrator co-administration arm; Multi-dose study (time offset > 48 h)
