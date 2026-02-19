@@ -1,65 +1,165 @@
 # Model-Informed Drug Development Portfolio
 
-**Hajar Besbassi** | Pharmacometrics & QSP
+**Hajar Besbassi** | Pharmacometrics, QSP & Biopharmaceutics Modeling
 
-This repository showcases quantitative systems pharmacology (QSP) and model-informed drug development (MIDD) projects built to industry and regulatory standards.
-
----
-
-## Projects
-
-### [KRAS G12C QSP Model](01-KRAS-G12C-qsp-model/)
-
-A 9-state ODE model explaining why sotorasib (LUMAKRAS) achieves durable responses in NSCLC but not in CRC, and how EGFR blockade (panitumumab) rescues CRC outcomes through combination therapy.
-
-**Highlights:**
-- Mechanistic resistance framework with adaptive feedback rebound and bypass signaling
-- Virtual population (N=200) with median PFS matching clinical data within 12%
-- Morris global sensitivity analysis identifying key resistance drivers
-- ICH M15-aligned credibility assessment and regulatory-style documentation
-
-**Tools:** Python, SciPy, SALib | **Domain:** Oncology, Targeted Therapy, Adaptive Resistance
+End-to-end quantitative pharmacology projects — from mechanistic ODE systems to regulatory-style submissions — built on real published clinical data and aligned with FDA, EMA, and ICH frameworks.
 
 ---
 
-### [POPPK — Oral Midazolam CYP3A4 Probe](02-POPPK-midazolam-cyp3a4-probe/)
+## Portfolio at a Glance
 
-Population pharmacokinetic analysis of the standard CYP3A4 probe substrate (7.5 mg, N=120), with parameters calibrated to the OSP Midazolam PBPK model (qualified against multiple published clinical studies).
-
-**Highlights:**
-- 2-compartment SAEM estimation (nlmixr2/rxode2), dAIC = 467 vs 1-compartment
-- Allometric weight scaling with verified exposure analysis and bootstrap CIs
-- Production diagnostics: GOF, VPC, eta distributions, individual fits, forest plot
-- CYP3A4 inhibition bridge connecting baseline PK to DDI risk
-- External literature qualification against 12 OSP studies (11/12 within 2-fold AUC ratio)
-
-**Tools:** R, nlmixr2, rxode2, Python | **Domain:** Clinical Pharmacology, PopPK, DDI
+| # | Project | Model Type | Key Metric | Domain |
+|---|---------|-----------|------------|--------|
+| 01 | [KRAS G12C QSP](#01--kras-g12c-qsp-model) | 9-state ODE, virtual population | mPFS within 12% of clinical | Oncology |
+| 02 | [Midazolam PopPK](#02--population-pk--oral-midazolam) | 2-cpt SAEM (nlmixr2) | 11/12 studies within 2-fold | Clinical Pharmacology |
+| 03 | [Static DDI Framework](#03--static-ddi-risk-assessment) | Mechanistic static model | Dual TDI + induction resolved | Drug-Drug Interactions |
+| 04 | [PBBM Felodipine](#04--pbbm-oral-absorption--felodipine) | 17-state ACAT | 9/9 IR arms within 2-fold | Biopharmaceutics |
 
 ---
 
-### [Static DDI Risk Assessment](03-static-DDI-framework/)
+## 01 | KRAS G12C QSP Model
 
-Drug-drug interaction screening per FDA 2020 guidance and ICH M12 (2024), with two cases: ketoconazole benchmark validation and sotorasib multi-mechanism perpetrator analysis.
+> **Why does sotorasib work in NSCLC but fail in CRC — and how does combination therapy rescue outcomes?**
 
-**Highlights:**
-- Reversible inhibition, TDI, and induction pathways with net effect logic
-- Monte Carlo uncertainty quantification and tornado sensitivity analysis
-- Identifies when PBPK is essential to resolve opposing mechanisms
-- Regulatory-style case reports with full mathematical derivations
+A 9-state ODE system encoding adaptive resistance, lineage-specific feedback rebound, and bypass signaling. Virtual population (N=200) with Latin Hypercube sampling reproduces the NSCLC vs CRC efficacy gap observed in CodeBreaK 100.
 
-**Tools:** R | **Domain:** Clinical Pharmacology, Drug-Drug Interactions, Regulatory Science
+<p align="center">
+  <img src="01-KRAS-G12C-qsp-model/docs/figures/fig8_waterfall_vpop.png" width="100%" alt="Virtual population waterfall plot"/>
+</p>
+<p align="center"><i>Virtual population waterfall plots — NSCLC mono vs CRC mono vs CRC combination. mPFS matches clinical data within 12%.</i></p>
+
+<p align="center">
+  <img src="01-KRAS-G12C-qsp-model/docs/figures/fig5_crc_vs_nsclc.png" width="80%" alt="CRC vs NSCLC differential response"/>
+</p>
+<p align="center"><i>Differential tumor response and pathway rebound dynamics — CRC rebounds faster due to 3x stronger EGFR-driven feedback gain.</i></p>
+
+**Key Results:**
+- Median PFS: NSCLC 6.0 mo (clinical 6.8), CRC combo 6.0 mo (clinical 5.6)
+- Morris sensitivity identifies bypass signaling and feedback gain as dominant resistance drivers
+- Combination with panitumumab suppresses receptor-driven rebound, converting PD to PR in CRC
+- ICH M15-aligned credibility assessment with full regulatory documentation
+
+**Tools:** Python, SciPy, SALib | **Regulatory:** ICH M15, FDA QSP framework
+
+[View Project &rarr;](01-KRAS-G12C-qsp-model/)
 
 ---
 
-### [PBBM Oral Absorption — Felodipine](04-PBBM-oral-absorption-felodipine/)
+## 02 | Population PK — Oral Midazolam
 
-Physiologically based biopharmaceutics model (PBBM) for felodipine (BCS Class II), predicting fasted/fed-state oral absorption from biopharmaceutic first principles and qualifying against 22 published clinical studies (442 data points from the OSP Database).
+> **Full PopPK workflow for the standard CYP3A4 probe, externally qualified against 12 published clinical studies.**
 
-**Highlights:**
-- 7-segment ACAT model (16 ODEs) with Noyes-Whitney dissolution and Peff-driven absorption
-- Food effect prediction from mechanistic knobs: bile salts, gastric emptying, gastric pH
-- Morris global sensitivity analysis identifying S₀, bile factors, and Fg/Fh as top exposure drivers
-- Virtual bioequivalence analysis linking particle size to systemic exposure
-- Qualification against real published clinical data (OSP database, control arms only)
+2-compartment SAEM estimation (nlmixr2/rxode2) with allometric scaling, covariate evaluation, and simulation-based DDI risk bridge. External literature qualification module benchmarks typical predictions against OSP-digitized mean profiles.
 
-**Tools:** Python, SciPy, SALib | **Domain:** Biopharmaceutics, Oral Absorption, PBBM, BCS Class II
+<p align="center">
+  <img src="02-POPPK-midazolam-cyp3a4-probe/figures/vpc.png" width="55%" alt="Visual Predictive Check"/>
+  &nbsp;&nbsp;
+  <img src="02-POPPK-midazolam-cyp3a4-probe/figures/gof_4panel.png" width="40%" alt="Goodness of Fit"/>
+</p>
+<p align="center"><i>Left: Visual Predictive Check (500 simulations). Right: Goodness-of-fit diagnostics (DV vs PRED/IPRED, IRES).</i></p>
+
+**Key Results:**
+- 2-compartment model selected (dAIC = 467 vs 1-compartment)
+- External qualification: 11/12 OSP studies within 2-fold AUC ratio
+- CYP3A4 inhibition bridge: ketoconazole co-admin predicts 5.2-fold AUC increase
+- Production diagnostics: GOF, VPC, eta distributions, individual fits, covariate forest plot
+
+**Tools:** R, nlmixr2, rxode2, Python | **Regulatory:** FDA PopPK Guidance (2022)
+
+[View Project &rarr;](02-POPPK-midazolam-cyp3a4-probe/)
+
+---
+
+## 03 | Static DDI Risk Assessment
+
+> **When opposing CYP3A4 mechanisms collide, can a static model resolve the net direction — or must you escalate to PBPK?**
+
+Mechanistic static model implementing FDA 2020 DDI guidance equations for reversible inhibition, time-dependent inhibition, and induction. Two cases: ketoconazole benchmark (validates framework) and sotorasib (reveals when static models reach their limit).
+
+<p align="center">
+  <img src="03-static-DDI-framework/figures/sotorasib_net_effect_scenarios.png" width="90%" alt="Sotorasib net effect scenarios"/>
+</p>
+<p align="center"><i>Sotorasib CYP3A4: TDI predicts inhibition (AUCR ~8x), induction predicts net decrease — the net direction depends entirely on induction scaling (d). Static model cannot resolve this; PBPK escalation required.</i></p>
+
+<p align="center">
+  <img src="03-static-DDI-framework/figures/sotorasib_mechanism_dashboard.png" width="50%" alt="Sotorasib mechanism dashboard"/>
+</p>
+<p align="center"><i>Multi-mechanism DDI dashboard: CYP reversible inhibition, TDI, induction, and 9 transporters screened in a single assessment.</i></p>
+
+**Key Results:**
+- Ketoconazole benchmark: predicted AUCR = 27.6 (observed = 11.2) — appropriately conservative
+- Sotorasib: dual TDI + induction on CYP3A4; net effect unresolvable by static model
+- 6/9 transporters flagged (P-gp, BCRP, OATP1B1/1B3, MATE1, MATE2-K)
+- Monte Carlo uncertainty quantification + tornado sensitivity analysis
+
+**Tools:** R | **Regulatory:** FDA In Vitro DDI Guidance (2020), ICH M12 (2024)
+
+[View Project &rarr;](03-static-DDI-framework/)
+
+---
+
+## 04 | PBBM Oral Absorption — Felodipine
+
+> **Can a mechanistic ACAT model predict clinical PK profiles from biopharmaceutic first principles and decompose the food effect into competing physiological drivers?**
+
+7-segment ACAT model (17 ODEs) with Noyes-Whitney dissolution, Henderson-Hasselbalch pH-solubility, and Peff-driven absorption. Qualified against 408 data points from 31 published studies (OSP Database). Model qualification achieved 9/9 IR arms within 2-fold AUC ratio under mean-level comparison. No parameter was tuned per study.
+
+<p align="center">
+  <img src="04-PBBM-oral-absorption-felodipine/figures/pk_overlay_fasted.png" width="48%" alt="Fasted PK overlay"/>
+  &nbsp;&nbsp;
+  <img src="04-PBBM-oral-absorption-felodipine/figures/forest_plot_auc_ratio.png" width="42%" alt="Forest plot AUC ratio"/>
+</p>
+<p align="center"><i>Left: ACAT predicted vs observed plasma profiles (31 studies overlaid). Right: Cross-study forest plot — all 9 IR arms within 2-fold bounds (blue bars).</i></p>
+
+<p align="center">
+  <img src="04-PBBM-oral-absorption-felodipine/figures/food_effect_decomposition.png" width="90%" alt="Food effect decomposition"/>
+</p>
+<p align="center"><i>Mechanistic food effect decomposition: bile salts drive +60% Cmax increase, while delayed gastric emptying (-20%) and elevated pH (-8%) partially offset it.</i></p>
+
+**Key Results:**
+- Fasted qualification: 9/9 IR studies within 2-fold AUC ratio (no per-study tuning)
+- Food effect: Cmax ratio 1.31, AUC ratio 1.03 — bile salt enhancement dominates
+- Sensitivity analysis: CL, Fg, Fh, dose, Peff are top exposure drivers (Morris screening, 480 evaluations)
+- Virtual bioequivalence: micronized (10 um) Cmax GMR 1.26 vs reference; coarser (50 um) AUC GMR 0.83
+
+**Tools:** Python, SciPy, SALib | **Regulatory:** FDA PBBM Draft Guidance (2023), EMA PBPK Reflection Paper
+
+[View Project &rarr;](04-PBBM-oral-absorption-felodipine/)
+
+---
+
+## Technical Scope
+
+| Category | Coverage |
+|----------|----------|
+| **Modeling** | ODE systems (QSP, ACAT), population PK (NLME/SAEM), mechanistic static DDI, PBPK/PBBM |
+| **Analysis** | Global sensitivity (Morris), virtual populations (LHS), Monte Carlo, virtual bioequivalence |
+| **Languages** | Python (NumPy, SciPy, pandas, matplotlib, SALib), R (nlmixr2, rxode2, ggplot2) |
+| **Regulatory** | ICH M15, ICH M12, FDA PopPK (2022), FDA DDI (2020), FDA PBBM (2023), EMA PBPK |
+| **Data** | OSP Database for Observed Data, published clinical studies, PubChem, DrugBank |
+| **Workflow** | Reproducible pipelines (`run_all.sh`), regulatory-style reports, version-controlled outputs |
+
+---
+
+## Regulatory Frameworks Applied
+
+- **ICH M15** — General principles for model-informed drug development (credibility assessment)
+- **ICH M12** — Drug interaction studies (2024)
+- **FDA Population Pharmacokinetics Guidance** (2022)
+- **FDA In Vitro Drug Interaction Studies Guidance** (2020)
+- **FDA PBBM Draft Guidance** for oral drug products (2023)
+- **EMA Guideline on Reporting of PBPK Modelling and Simulation**
+
+---
+
+## Repository Structure
+
+```
+Model-Informed-Drug-Development-Portfolio/
+├── 01-KRAS-G12C-qsp-model/          # QSP: adaptive resistance in oncology
+├── 02-POPPK-midazolam-cyp3a4-probe/ # PopPK: CYP3A4 probe + external qualification
+├── 03-static-DDI-framework/         # DDI: multi-mechanism risk assessment
+└── 04-PBBM-oral-absorption-felodipine/ # PBBM: oral absorption + food effect
+```
+
+Each project is self-contained with its own `README.md`, `run_all.sh`, analysis scripts, figures, output tables, and regulatory-style report documents.
