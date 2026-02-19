@@ -1,0 +1,8 @@
+model,parameter,value,description
+efficacy,E0,0.12,Baseline response rate
+efficacy,Emax,0.25,Maximum additional response
+efficacy,EC50,30.0,Half-maximal AUC (hr*ug/mL)
+efficacy,gamma,1.2,Hill coefficient
+safety,alpha,-3.5,Logistic intercept
+safety,beta_cmax,0.08,Cmax coefficient
+safety,beta_cpi,1.8,Prior CPI coefficient

@@ -107,6 +107,19 @@ AUCR_gut     = 1 / (fg × (1/R1,gut) + (1 − fg))
 
 ---
 
+## Interactive App
+
+An interactive Shiny app lets you explore DDI screening in real-time:
+
+```r
+# From the project root
+shiny::runApp("shiny_app")
+```
+
+**Features:** Preset loading (ketoconazole, sotorasib), CYP/transporter screening tables, tornado sensitivity, Ki vs [I]max,u heatmap, Monte Carlo simulation, and downloadable CSV reports. See [`shiny_app/README.md`](shiny_app/README.md) for details.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -120,6 +133,9 @@ bash run_all.sh
 03-static-DDI-framework/
 ├── README.md
 ├── run_all.sh                          # One-command pipeline execution
+├── shiny_app/
+│   ├── app.R                           # Interactive DDI screening calculator
+│   └── README.md                       # How to run
 ├── data/
 │   ├── assumptions.md                  # Parameter documentation with sources
 │   ├── inputs_midazolam_case.csv       # Case A input parameters

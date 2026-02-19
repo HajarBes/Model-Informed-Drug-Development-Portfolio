@@ -12,9 +12,18 @@ End-to-end quantitative pharmacology projects — from mechanistic ODE systems t
 |---|---------|-----------|------------|--------|
 | 01 | [KRAS G12C QSP](#01--kras-g12c-qsp-model) | 9-state ODE, virtual population | mPFS within 12% of clinical | Oncology |
 | 02 | [Midazolam PopPK](#02--population-pk--oral-midazolam) | 2-cpt SAEM (nlmixr2) | 11/12 studies within 2-fold | Clinical Pharmacology |
-| 03 | [Static DDI Framework](#03--static-ddi-risk-assessment) | Mechanistic static model | Dual TDI + induction resolved | Drug-Drug Interactions |
+| 03 | [Static DDI Framework](#03--static-ddi-risk-assessment) | Mechanistic static model + **R Shiny** | Dual TDI + induction resolved | Drug-Drug Interactions |
 | 04 | [PBBM Felodipine](#04--pbbm-oral-absorption--felodipine) | 17-state ACAT | 9/9 IR arms within 2-fold | Biopharmaceutics |
-| 05 | [Sotorasib E-R](#05--sotorasib-exposure-response--dose-optimization) | E-R logistic + dose optimization | Flat E-R (saturable absorption) | Oncology Dose Selection |
+| 05 | [Sotorasib E-R](#05--sotorasib-exposure-response--dose-optimization) | E-R logistic + dose optimization + **R Shiny** | Flat E-R (saturable absorption) | Oncology Dose Selection |
+
+### Interactive R Shiny Apps
+
+Two interactive applications built with R Shiny — click and explore instead of scrolling static figures:
+
+| App | Project | What It Does | Launch |
+|-----|---------|-------------|--------|
+| **DDI Screening Calculator** | 03 | Real-time FDA DDI screening with presets, Monte Carlo, sensitivity analysis, transporter dashboard | `shiny::runApp("03-static-DDI-framework/shiny_app")` |
+| **E-R Dose Explorer** | 05 | Dose-exposure-response explorer with patient subgroup filtering and benefit-risk dashboard | `shiny::runApp("05-sotorasib-exposure-response/shiny_app")` |
 
 ---
 
@@ -93,7 +102,9 @@ Mechanistic static model implementing FDA 2020 DDI guidance equations for revers
 - 6/9 transporters flagged (P-gp, BCRP, OATP1B1/1B3, MATE1, MATE2-K)
 - Monte Carlo uncertainty quantification + tornado sensitivity analysis
 
-**Tools:** R | **Regulatory:** FDA In Vitro DDI Guidance (2020), ICH M12 (2024)
+**Tools:** R, Shiny | **Regulatory:** FDA In Vitro DDI Guidance (2020), ICH M12 (2024)
+
+**Interactive App:** [`shiny::runApp("03-static-DDI-framework/shiny_app")`](03-static-DDI-framework/shiny_app/) — real-time DDI screening calculator with presets, sensitivity, Monte Carlo, and transporter dashboard.
 
 [View Project &rarr;](03-static-DDI-framework/)
 
@@ -152,7 +163,9 @@ Exposure-response analysis for the FDA dose optimization debate. Saturable absor
 - Dose optimization: overlapping benefit-risk profiles; dose-optimization study justified
 - Completes sotorasib trilogy: QSP (01) → DDI (03) → E-R (05)
 
-**Tools:** Python, statsmodels, SciPy | **Regulatory:** FDA E-R Guidance, ICH E4, Project Optimus
+**Tools:** Python, statsmodels, SciPy, R Shiny | **Regulatory:** FDA E-R Guidance, ICH E4, Project Optimus
+
+**Interactive App:** [`shiny::runApp("05-sotorasib-exposure-response/shiny_app")`](05-sotorasib-exposure-response/shiny_app/) — explore dose-exposure, efficacy, safety, and benefit-risk with patient profile filtering.
 
 [View Project &rarr;](05-sotorasib-exposure-response/)
 
@@ -164,7 +177,7 @@ Exposure-response analysis for the FDA dose optimization debate. Saturable absor
 |----------|----------|
 | **Modeling** | ODE systems (QSP, ACAT), population PK (NLME/SAEM), mechanistic static DDI, PBPK/PBBM, exposure-response (logistic, Emax) |
 | **Analysis** | Global sensitivity (Morris), virtual populations (LHS), Monte Carlo, virtual bioequivalence, dose optimization (benefit-risk) |
-| **Languages** | Python (NumPy, SciPy, pandas, matplotlib, SALib, statsmodels), R (nlmixr2, rxode2, ggplot2) |
+| **Languages** | Python (NumPy, SciPy, pandas, matplotlib, SALib, statsmodels), R (nlmixr2, rxode2, ggplot2, Shiny) |
 | **Regulatory** | ICH M15, ICH M12, ICH E4, FDA PopPK (2022), FDA DDI (2020), FDA PBBM (2023), FDA E-R (2003/2023), EMA PBPK, Project Optimus |
 | **Data** | OSP Database for Observed Data, published clinical studies, PubChem, DrugBank |
 | **Workflow** | Reproducible pipelines (`run_all.sh`), regulatory-style reports, version-controlled outputs |

@@ -338,4 +338,17 @@ fig.savefig(DIR_FIGURES / "benefit_risk_overlay.png")
 plt.close(fig)
 log.info("Saved benefit_risk_overlay.png")
 
+# ── Export Model Parameters for Shiny App ──────────────────────────
+model_params = pd.DataFrame([
+    {"model": "efficacy", "parameter": "E0", "value": E0, "description": "Baseline response rate"},
+    {"model": "efficacy", "parameter": "Emax", "value": EMAX, "description": "Maximum additional response"},
+    {"model": "efficacy", "parameter": "EC50", "value": EC50, "description": "Half-maximal AUC (hr*ug/mL)"},
+    {"model": "efficacy", "parameter": "gamma", "value": GAMMA, "description": "Hill coefficient"},
+    {"model": "safety", "parameter": "alpha", "value": ALPHA, "description": "Logistic intercept"},
+    {"model": "safety", "parameter": "beta_cmax", "value": BETA_CMAX, "description": "Cmax coefficient"},
+    {"model": "safety", "parameter": "beta_cpi", "value": BETA_CPI, "description": "Prior CPI coefficient"},
+])
+model_params.to_csv(DIR_TABLES / "model_params.csv", index=False)
+log.info("Saved model_params.csv")
+
 log.info("Script 04 complete.")

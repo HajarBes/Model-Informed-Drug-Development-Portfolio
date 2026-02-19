@@ -126,6 +126,19 @@ Completes a sotorasib trilogy: mechanistic biology (01) → drug interaction ris
 
 ---
 
+## Interactive App
+
+An interactive Shiny app lets you explore the E-R results — filter by patient profile, compare doses, and see predicted outcomes:
+
+```r
+# After running the Python pipeline:
+shiny::runApp("shiny_app")
+```
+
+**Features:** Dose-exposure boxplots, E-R curve overlay, safety risk stratification, benefit-risk scatter, patient "what-if" filtering by ECOG/CPI, and downloadable dose comparison CSV. Model parameters are read from pipeline outputs (not hard-coded). See [`shiny_app/README.md`](shiny_app/README.md) for details.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -141,6 +154,9 @@ bash run_all.sh
 ├── README.md
 ├── requirements.txt
 ├── run_all.sh                         # One-command pipeline execution
+├── shiny_app/
+│   ├── app.R                          # Interactive E-R explorer (reads CSV outputs)
+│   └── README.md                      # How to run
 ├── analysis/
 │   ├── 00_setup.py                    # Constants, PK params, helpers
 │   ├── 01_simulate_virtual_patients.py # PopPK simulation (N=500/dose)
