@@ -63,7 +63,7 @@ jobs:
   test-poppk:
     name: "02 — PopPK Midazolam"
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     defaults:
       run:
         working-directory: 02-POPPK-midazolam-cyp3a4-probe
@@ -74,23 +74,25 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: "4.4"
+          use-public-rspm: true
 
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgsl-dev libmpfr-dev libcurl4-openssl-dev
+          sudo apt-get install -y libgsl-dev libmpfr-dev libcurl4-openssl-dev \
+            libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev \
+            libpng-dev libtiff5-dev libjpeg-dev libxml2-dev
 
       - name: Cache R packages
         uses: actions/cache@v4
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: R-${{ runner.os }}-${{ hashFiles('02-POPPK-midazolam-cyp3a4-probe/**/*.R') }}
-          restore-keys: R-${{ runner.os }}-
+          key: R-poppk-${{ runner.os }}-${{ hashFiles('02-POPPK-midazolam-cyp3a4-probe/**/*.R') }}
+          restore-keys: R-poppk-${{ runner.os }}-
 
       - name: Install R packages
         run: |
           Rscript -e '
-            options(repos = c(CRAN = "https://cloud.r-project.org"))
             pkgs <- c("tidyverse", "deSolve", "nlmixr2", "rxode2", "patchwork", "scales")
             new_pkgs <- pkgs[!pkgs %in% installed.packages()[,"Package"]]
             if (length(new_pkgs)) install.packages(new_pkgs)
@@ -136,18 +138,25 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: "4.4"
+          use-public-rspm: true
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libfontconfig1-dev \
+            libfreetype6-dev libharfbuzz-dev libfribidi-dev libpng-dev \
+            libtiff5-dev libjpeg-dev libxml2-dev
 
       - name: Cache R packages
         uses: actions/cache@v4
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: R-${{ runner.os }}-${{ hashFiles('03-static-DDI-framework/**/*.R') }}
-          restore-keys: R-${{ runner.os }}-
+          key: R-ddi-${{ runner.os }}-${{ hashFiles('03-static-DDI-framework/**/*.R') }}
+          restore-keys: R-ddi-${{ runner.os }}-
 
       - name: Install R packages
         run: |
           Rscript -e '
-            options(repos = c(CRAN = "https://cloud.r-project.org"))
             pkgs <- c("tidyverse", "scales", "patchwork")
             new_pkgs <- pkgs[!pkgs %in% installed.packages()[,"Package"]]
             if (length(new_pkgs)) install.packages(new_pkgs)
