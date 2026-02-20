@@ -2,6 +2,8 @@
 
 **Hajar Besbassi** | Pharmacometrics, QSP & Biopharmaceutics Modeling
 
+[![CI](https://github.com/HajarBes/Model-Informed-Drug-Development-Portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/HajarBes/Model-Informed-Drug-Development-Portfolio/actions/workflows/ci.yml)
+
 End-to-end quantitative pharmacology projects — from mechanistic ODE systems to regulatory-style submissions — built on real published clinical data and aligned with FDA, EMA, and ICH frameworks.
 
 ---
@@ -181,6 +183,7 @@ Exposure-response analysis for the FDA dose optimization debate. Saturable absor
 | **Regulatory** | ICH M15, ICH M12, ICH E4, FDA PopPK (2022), FDA DDI (2020), FDA PBBM (2023), FDA E-R (2003/2023), EMA PBPK, Project Optimus |
 | **Data** | OSP Database for Observed Data, published clinical studies, PubChem, DrugBank |
 | **Workflow** | Reproducible pipelines (`run_all.sh`), regulatory-style reports, version-controlled outputs |
+| **CI** | GitHub Actions — runs each project's full pipeline in lightweight mode; licensed tools (NONMEM, CmdStan) and external datasets are excluded |
 
 ---
 

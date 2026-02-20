@@ -1,0 +1,279 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Job 1: KRAS G12C QSP Model (Python)
+  # ---------------------------------------------------------------------------
+  test-kras-qsp:
+    name: "01 — KRAS G12C QSP"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 01-KRAS-G12C-qsp-model
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: 01-KRAS-G12C-qsp-model/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        run: bash run_all.sh
+
+      - name: Verify outputs
+        run: |
+          test -f docs/figures/fig1_pk_profile.png
+          test -f docs/figures/fig8_waterfall_vpop.png
+          test -f docs/figures/fig9_tornado_sensitivity.png
+          test -f outputs/sim_vehicle.csv
+          test -f outputs/vpop_results.csv
+          test -f outputs/sensitivity_morris.csv
+          echo "All expected outputs verified."
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kras-qsp-outputs
+          path: |
+            01-KRAS-G12C-qsp-model/docs/figures/
+            01-KRAS-G12C-qsp-model/outputs/
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Job 2: Population PK — Midazolam (R, simulated mode)
+  # ---------------------------------------------------------------------------
+  test-poppk:
+    name: "02 — PopPK Midazolam"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 02-POPPK-midazolam-cyp3a4-probe
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgsl-dev libmpfr-dev libcurl4-openssl-dev
+
+      - name: Cache R packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: R-${{ runner.os }}-${{ hashFiles('02-POPPK-midazolam-cyp3a4-probe/**/*.R') }}
+          restore-keys: R-${{ runner.os }}-
+
+      - name: Install R packages
+        run: |
+          Rscript -e '
+            options(repos = c(CRAN = "https://cloud.r-project.org"))
+            pkgs <- c("tidyverse", "deSolve", "nlmixr2", "rxode2", "patchwork", "scales")
+            new_pkgs <- pkgs[!pkgs %in% installed.packages()[,"Package"]]
+            if (length(new_pkgs)) install.packages(new_pkgs)
+          '
+
+      - name: Run pipeline (simulated mode)
+        run: bash run_all.sh simulated
+
+      - name: Verify outputs
+        run: |
+          test -f data/simulated/analysis_dataset.csv
+          test -f figures/gof_4panel.png
+          test -f figures/vpc.png
+          test -f figures/eta_distributions.png
+          test -f figures/forest_covariate_auc.png
+          test -f outputs/tables/parameter_estimates_base.csv
+          echo "All expected outputs verified."
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: poppk-outputs
+          path: |
+            02-POPPK-midazolam-cyp3a4-probe/figures/
+            02-POPPK-midazolam-cyp3a4-probe/outputs/tables/
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Job 3: Static DDI Framework (R)
+  # ---------------------------------------------------------------------------
+  test-static-ddi:
+    name: "03 — Static DDI"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 03-static-DDI-framework
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4"
+
+      - name: Cache R packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: R-${{ runner.os }}-${{ hashFiles('03-static-DDI-framework/**/*.R') }}
+          restore-keys: R-${{ runner.os }}-
+
+      - name: Install R packages
+        run: |
+          Rscript -e '
+            options(repos = c(CRAN = "https://cloud.r-project.org"))
+            pkgs <- c("tidyverse", "scales", "patchwork")
+            new_pkgs <- pkgs[!pkgs %in% installed.packages()[,"Package"]]
+            if (length(new_pkgs)) install.packages(new_pkgs)
+          '
+
+      - name: Run pipeline
+        run: bash run_all.sh
+
+      - name: Verify outputs
+        run: |
+          test -f figures/midazolam_pred_obs_band.png
+          test -f figures/sotorasib_mechanism_dashboard.png
+          test -f figures/sotorasib_net_effect_scenarios.png
+          CSV_COUNT=$(ls -1 outputs/tables/*.csv 2>/dev/null | wc -l)
+          if [ "$CSV_COUNT" -eq 0 ]; then
+            echo "ERROR: No CSV files found in outputs/tables/"
+            exit 1
+          fi
+          echo "All expected outputs verified ($CSV_COUNT CSV tables)."
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-ddi-outputs
+          path: |
+            03-static-DDI-framework/figures/
+            03-static-DDI-framework/outputs/tables/
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Job 4: PBBM Oral Absorption — Felodipine (Python)
+  # ---------------------------------------------------------------------------
+  test-pbbm:
+    name: "04 — PBBM Felodipine"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 04-PBBM-oral-absorption-felodipine
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: 04-PBBM-oral-absorption-felodipine/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline (skip if OSP data missing)
+        id: run-pipeline
+        run: |
+          OSP_FILE="../02-POPPK-midazolam-cyp3a4-probe/data/literature_osp/ObsDataPK_OSP.xlsx"
+          if [ ! -f "$OSP_FILE" ]; then
+            echo "::notice::Skipping Project 04 CI: external OSP dataset (ObsDataPK_OSP.xlsx) is not in repo. See README for how to run locally."
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "skipped=false" >> "$GITHUB_OUTPUT"
+          bash run_all.sh
+
+      - name: Verify outputs
+        if: steps.run-pipeline.outputs.skipped != 'true'
+        run: |
+          test -f figures/pk_overlay_fasted.png
+          test -f figures/forest_plot_auc_ratio.png
+          test -f figures/food_effect_decomposition.png
+          echo "All expected outputs verified."
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbbm-outputs
+          path: 04-PBBM-oral-absorption-felodipine/figures/
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------------------
+  # Job 5: Sotorasib Exposure-Response (Python)
+  # ---------------------------------------------------------------------------
+  test-exposure-response:
+    name: "05 — Sotorasib E-R"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: 05-sotorasib-exposure-response
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: 05-sotorasib-exposure-response/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline
+        run: bash run_all.sh
+
+      - name: Verify outputs
+        run: |
+          test -f figures/dose_exposure_boxplot.png
+          test -f figures/er_efficacy_panel.png
+          test -f figures/benefit_risk_overlay.png
+          test -f figures/covariate_forest_plot.png
+          CSV_COUNT=$(ls -1 outputs/tables/*.csv 2>/dev/null | wc -l)
+          if [ "$CSV_COUNT" -eq 0 ]; then
+            echo "ERROR: No CSV files found in outputs/tables/"
+            exit 1
+          fi
+          echo "All expected outputs verified ($CSV_COUNT CSV tables)."
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exposure-response-outputs
+          path: |
+            05-sotorasib-exposure-response/figures/
+            05-sotorasib-exposure-response/outputs/tables/
+          if-no-files-found: ignore
