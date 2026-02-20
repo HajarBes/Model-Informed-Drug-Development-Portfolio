@@ -3,32 +3,42 @@
 // 2-Compartment Oral PopPK Model for Midazolam (CYP3A4 Probe)
 //
 // Mirrors the nlmixr2/NONMEM structural model:
-//   - 3 ODE states: depot, central, peripheral
+//   - 2-compartment with first-order absorption (analytical solution)
 //   - BSV on Ka, CL, Vc only (no BSV on Q or Vp)
 //   - Allometric scaling: CL/Q ~ (WT/70)^0.75, Vc/Vp ~ (WT/70)^1.0
 //   - Combined proportional + additive residual error
 //   - Non-centered parameterization for efficient MCMC sampling
 //
+// Uses closed-form analytical solution (tri-exponential) instead of ODE
+// solver for performance. Equivalent to NONMEM ADVAN4/TRANS4.
+//
 // Priors centered on OSP Midazolam PBPK (Hanke et al. CPT:PSP 2018)
 // =============================================================================
 
 functions {
-  // 2-compartment oral ODE system
-  // y[1] = depot, y[2] = central, y[3] = peripheral
-  // theta[1] = Ka, theta[2] = ke, theta[3] = k12, theta[4] = k21
-  vector ode_2cmt(real t, vector y, array[] real theta,
-                  array[] real x_r, array[] int x_i) {
-    vector[3] dydt;
-    real Ka  = theta[1];
-    real ke  = theta[2];
-    real k12 = theta[3];
-    real k21 = theta[4];
+  // Analytical solution for 2-compartment oral model
+  // Returns central compartment concentration at time t
+  // Equivalent to depot -> central -> peripheral with first-order absorption
+  real two_cmt_oral_conc(real t, real dose, real Ka,
+                         real ke, real k12, real k21, real V1) {
+    // Hybrid rate constants (eigenvalues of disposition matrix)
+    real sum_k = ke + k12 + k21;
+    real disc = sqrt(fmax(square(sum_k) - 4.0 * ke * k21, 1e-20));
+    real alpha = 0.5 * (sum_k + disc);
+    real beta  = 0.5 * (sum_k - disc);
 
-    dydt[1] = -Ka * y[1];                                        // depot
-    dydt[2] =  Ka * y[1] - ke * y[2] - k12 * y[2] + k21 * y[3]; // central
-    dydt[3] =  k12 * y[2] - k21 * y[3];                          // peripheral
+    // Coefficients for tri-exponential solution
+    // C(t) = dose*Ka/V1 * [A*exp(-alpha*t) + B*exp(-beta*t) + C*exp(-Ka*t)]
+    real A_coef = (k21 - alpha) / ((beta - alpha) * (Ka - alpha));
+    real B_coef = (k21 - beta)  / ((alpha - beta) * (Ka - beta));
+    real C_coef = (k21 - Ka)    / ((alpha - Ka) * (beta - Ka));
 
-    return dydt;
+    real conc = (dose * Ka / V1) *
+                (A_coef * exp(-alpha * t) +
+                 B_coef * exp(-beta * t) +
+                 C_coef * exp(-Ka * t));
+
+    return fmax(conc, 1e-12);  // IPRED floor
   }
 }
 
@@ -45,8 +55,6 @@ data {
 }
 
 transformed data {
-  array[0] real x_r;   // no real auxiliary data for ODE
-  array[0] int x_i;    // no integer auxiliary data for ODE
   real WT_REF = 70.0;  // reference body weight (kg)
 }
 
@@ -97,26 +105,12 @@ transformed parameters {
     real ke  = CL_ind[i] / V1_ind[i];
     real k12 = Q_ind[i]  / V1_ind[i];
     real k21 = Q_ind[i]  / V2_ind[i];
-    array[4] real theta = {Ka_ind[i], ke, k12, k21};
 
-    // Initial condition: full dose in depot
-    vector[3] y0 = [DOSE[i], 0.0, 0.0]';
-
-    // Collect observation times for this subject
-    int n_i = n_obs_per_subj[i];
-    array[n_i] real times_i;
-    for (j in 1:n_i) {
-      times_i[j] = TIME[start_idx[i] + j - 1];
-    }
-
-    // Solve ODE (batched per subject)
-    array[n_i] vector[3] sol = ode_rk45(ode_2cmt, y0, 0.0, times_i,
-                                         theta, x_r, x_i);
-
-    // Extract concentrations with IPRED floor
-    for (j in 1:n_i) {
+    // Analytical solution for each observation time
+    for (j in 1:n_obs_per_subj[i]) {
       int idx = start_idx[i] + j - 1;
-      IPRED[idx] = fmax(sol[j][2] / V1_ind[i], 1e-12);
+      IPRED[idx] = two_cmt_oral_conc(TIME[idx], DOSE[i], Ka_ind[i],
+                                      ke, k12, k21, V1_ind[i]);
     }
   }
 }
@@ -125,21 +119,21 @@ model {
   // --- Priors (centered on OSP Midazolam PBPK, Hanke et al. 2018) ---
 
   // Population fixed effects (log-scale)
-  // lka: log(2.5) = 0.916, SD=0.5 → 95% prior range: ~0.9–6.8 /h
+  // lka: log(2.5) = 0.916, SD=0.5 -> 95% prior range: ~0.9-6.8 /h
   lka ~ normal(log(2.5), 0.5);
-  // lcl: log(50) = 3.912, SD=0.3 → 95% prior range: ~27–91 L/h
+  // lcl: log(50) = 3.912, SD=0.3 -> 95% prior range: ~27-91 L/h
   lcl ~ normal(log(50), 0.3);
-  // lv1: log(45) = 3.807, SD=0.3 → 95% prior range: ~25–82 L
+  // lv1: log(45) = 3.807, SD=0.3 -> 95% prior range: ~25-82 L
   lv1 ~ normal(log(45), 0.3);
-  // lq: log(15) = 2.708, SD=0.5 → 95% prior range: ~5.5–41 L/h
+  // lq: log(15) = 2.708, SD=0.5 -> 95% prior range: ~5.5-41 L/h
   lq  ~ normal(log(15), 0.5);
-  // lv2: log(55) = 4.007, SD=0.5 → 95% prior range: ~20–150 L
+  // lv2: log(55) = 4.007, SD=0.5 -> 95% prior range: ~20-150 L
   lv2 ~ normal(log(55), 0.5);
 
   // BSV SDs — weakly informative half-normal (lower bound enforced by <lower=0>)
   omega_ka ~ normal(0, 1.0);   // wide: Ka variability less precisely known
-  omega_cl ~ normal(0, 0.5);   // TRUE_OMEGA$cl = 0.09 → SD = 0.30
-  omega_v1 ~ normal(0, 0.5);   // TRUE_OMEGA$vc = 0.04 → SD = 0.20
+  omega_cl ~ normal(0, 0.5);   // TRUE_OMEGA$cl = 0.09 -> SD = 0.30
+  omega_v1 ~ normal(0, 0.5);   // TRUE_OMEGA$vc = 0.04 -> SD = 0.20
 
   // Residual error SDs — weakly informative half-normal
   sigma_prop ~ normal(0, 0.5);  // TRUE_SIGMA$prop = 0.20

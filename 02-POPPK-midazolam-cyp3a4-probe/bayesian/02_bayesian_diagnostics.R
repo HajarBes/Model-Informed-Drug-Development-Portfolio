@@ -321,17 +321,37 @@ writeLines(weak_code, weak_stan_file)
 mod_weak <- cmdstan_model(weak_stan_file)
 log_msg("  Weakly informative Stan model compiled")
 
+# Define init function for sensitivity refit
+N_subj_sens <- data_map$stan_data$N_subj
+init_fun_sens <- function() {
+  list(
+    lka  = 0.8153 + rnorm(1, 0, 0.05),
+    lcl  = 3.9476 + rnorm(1, 0, 0.05),
+    lv1  = 3.8417 + rnorm(1, 0, 0.05),
+    lq   = 2.8205 + rnorm(1, 0, 0.05),
+    lv2  = 4.1356 + rnorm(1, 0, 0.05),
+    omega_ka = abs(0.60 + rnorm(1, 0, 0.05)),
+    omega_cl = abs(0.30 + rnorm(1, 0, 0.05)),
+    omega_v1 = abs(0.20 + rnorm(1, 0, 0.05)),
+    z_ka = rnorm(N_subj_sens, 0, 0.1),
+    z_cl = rnorm(N_subj_sens, 0, 0.1),
+    z_v1 = rnorm(N_subj_sens, 0, 0.1),
+    sigma_prop = abs(0.25 + rnorm(1, 0, 0.02)),
+    sigma_add  = abs(0.50 + rnorm(1, 0, 0.05))
+  )
+}
+
 # Refit with weakly informative priors
 fit_weak <- mod_weak$sample(
   data            = data_map$stan_data,
   chains          = 4,
   parallel_chains = 4,
-  iter_warmup     = 1000,
-  iter_sampling   = 1000,
-  adapt_delta     = 0.90,
+  iter_warmup     = 1500,
+  iter_sampling   = 1500,
+  adapt_delta     = 0.95,
   max_treedepth   = 12,
   seed            = 20240315,
-  init            = init_fun,
+  init            = init_fun_sens,
   refresh         = 200
 )
 

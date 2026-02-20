@@ -135,8 +135,8 @@ init_fun <- function() {
 }
 
 # --- MCMC sampling ------------------------------------------------------------
-log_msg("Starting MCMC sampling: 4 chains, 1000 warmup + 1000 sampling")
-log_msg("  adapt_delta = 0.90, max_treedepth = 12, seed = 20240315")
+log_msg("Starting MCMC sampling: 4 chains, 1500 warmup + 1500 sampling")
+log_msg("  adapt_delta = 0.95, max_treedepth = 12, seed = 20240315")
 
 t_start <- Sys.time()
 
@@ -144,9 +144,9 @@ fit <- mod$sample(
   data            = stan_data,
   chains          = 4,
   parallel_chains = 4,
-  iter_warmup     = 1000,
-  iter_sampling   = 1000,
-  adapt_delta     = 0.90,
+  iter_warmup     = 1500,
+  iter_sampling   = 1500,
+  adapt_delta     = 0.95,
   max_treedepth   = 12,
   seed            = 20240315,
   init            = init_fun,

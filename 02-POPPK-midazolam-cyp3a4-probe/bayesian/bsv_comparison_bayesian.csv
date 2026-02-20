@@ -1,0 +1,4 @@
+Parameter,OSP_True_Variance,OSP_True_SD,nlmixr2_Variance,NONMEM_Variance,Bayesian_SD_Median,Bayesian_SD_Q5,Bayesian_SD_Q95,Note
+BSV Ka,0.36,0.6,0.26754990167464254,0.0895,0.5475811399999999,0.38844055549999995,0.6796499665000001,nlmixr2/NONMEM report variance (omega^2); Stan estimates SD (omega). Convert: SD = sqrt(variance).
+BSV CL,0.09,0.3,0.08949020655581226,0.267,0.29772971000000004,0.2630889835,0.33695113250000003,nlmixr2/NONMEM report variance (omega^2); Stan estimates SD (omega). Convert: SD = sqrt(variance).
+BSV Vc,0.04,0.2,0.02790824727893172,0.0279,0.09659472050000001,0.0081820352,0.2975219315,nlmixr2/NONMEM report variance (omega^2); Stan estimates SD (omega). Convert: SD = sqrt(variance).

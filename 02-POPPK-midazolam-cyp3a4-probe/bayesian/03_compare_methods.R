@@ -184,41 +184,61 @@ log_msg("  Saved loo_summary.csv")
 # --- Structural Consistency Check ---------------------------------------------
 log_msg("Running structural consistency check (typical profile overlay)...")
 
+# Analytical 2-compartment oral solution (avoids deSolve dependency)
+pk_2cmt_oral <- function(t, dose, Ka, CL, V1, Q, V2) {
+  ke  <- CL / V1
+  k12 <- Q  / V1
+  k21 <- Q  / V2
+  sum_k <- ke + k12 + k21
+  disc  <- sqrt(pmax(sum_k^2 - 4 * ke * k21, 1e-20))
+  alpha <- (sum_k + disc) / 2
+  beta  <- (sum_k - disc) / 2
+  A <- (k21 - alpha) / ((beta - alpha) * (Ka - alpha))
+  B <- (k21 - beta)  / ((alpha - beta) * (Ka - beta))
+  C <- (k21 - Ka)    / ((alpha - Ka) * (beta - Ka))
+  conc <- (dose * Ka / V1) * (A * exp(-alpha * t) + B * exp(-beta * t) + C * exp(-Ka * t))
+  pmax(conc, 0)
+}
+
 # Simulate typical PK profile from each method's estimates
 dose_ug <- 7500  # 7.5 mg
 times <- seq(0.1, 12, by = 0.1)
 
 # OSP true
-pk_true <- simulate_subject_pk(dose_ug, times,
-                                ka = TRUE_PARAMS$ka, cl = TRUE_PARAMS$cl_f,
-                                v1 = TRUE_PARAMS$vc_f, q = TRUE_PARAMS$q_f,
-                                v2 = TRUE_PARAMS$vp_f)
-pk_true$Method <- "OSP True"
+pk_true <- data.frame(
+  time = times,
+  CP = pk_2cmt_oral(times, dose_ug, TRUE_PARAMS$ka, TRUE_PARAMS$cl_f,
+                    TRUE_PARAMS$vc_f, TRUE_PARAMS$q_f, TRUE_PARAMS$vp_f),
+  Method = "OSP True"
+)
 
 # nlmixr2
-pk_nlmixr2 <- simulate_subject_pk(dose_ug, times,
-                                    ka = nlmixr2_natural$Ka, cl = nlmixr2_natural$CL,
-                                    v1 = nlmixr2_natural$V1, q = nlmixr2_natural$Q,
-                                    v2 = nlmixr2_natural$V2)
-pk_nlmixr2$Method <- "nlmixr2 SAEM"
+pk_nlmixr2 <- data.frame(
+  time = times,
+  CP = pk_2cmt_oral(times, dose_ug, nlmixr2_natural$Ka, nlmixr2_natural$CL,
+                    nlmixr2_natural$V1, nlmixr2_natural$Q, nlmixr2_natural$V2),
+  Method = "nlmixr2 SAEM"
+)
 
 # NONMEM
-pk_nonmem <- simulate_subject_pk(dose_ug, times,
-                                  ka = nonmem_est$Ka, cl = nonmem_est$CL,
-                                  v1 = nonmem_est$V1, q = nonmem_est$Q,
-                                  v2 = nonmem_est$V2)
-pk_nonmem$Method <- "NONMEM SAEM"
+pk_nonmem <- data.frame(
+  time = times,
+  CP = pk_2cmt_oral(times, dose_ug, nonmem_est$Ka, nonmem_est$CL,
+                    nonmem_est$V1, nonmem_est$Q, nonmem_est$V2),
+  Method = "NONMEM SAEM"
+)
 
 # Bayesian (posterior median)
 bayes_med <- bayes_summ %>%
   select(variable, median) %>%
   deframe()
 
-pk_bayes <- simulate_subject_pk(dose_ug, times,
-                                 ka = bayes_med["Ka_pop"], cl = bayes_med["CL_pop"],
-                                 v1 = bayes_med["V1_pop"], q = bayes_med["Q_pop"],
-                                 v2 = bayes_med["V2_pop"])
-pk_bayes$Method <- "Bayesian (Stan)"
+pk_bayes <- data.frame(
+  time = times,
+  CP = pk_2cmt_oral(times, dose_ug, bayes_med["Ka_pop"], bayes_med["CL_pop"],
+                    bayes_med["V1_pop"], bayes_med["Q_pop"], bayes_med["V2_pop"]),
+  Method = "Bayesian (Stan)"
+)
 
 pk_all <- bind_rows(pk_true, pk_nlmixr2, pk_nonmem, pk_bayes)
 pk_all$Method <- factor(pk_all$Method,

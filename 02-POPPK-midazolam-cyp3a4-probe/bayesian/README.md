@@ -210,11 +210,14 @@ This avoids the "funnel" geometry that causes divergent transitions in
 centered parameterizations, especially when omega is small relative to
 the number of subjects.
 
-### ODE Solver Choice
+### Analytical Solution (No ODE Solver)
 
-`ode_rk45` (adaptive Runge-Kutta 4th/5th order) is used for the non-stiff
-2-compartment ODE. This is appropriate for linear PK systems and faster
-than stiff solvers (`ode_bdf`) for this model.
+The 2-compartment oral model uses a closed-form tri-exponential analytical
+solution rather than a numerical ODE solver. This is equivalent to
+NONMEM's ADVAN4/TRANS4 and dramatically faster for MCMC sampling
+(~100x vs `ode_rk45`). The analytical solution is exact for linear
+compartmental systems and avoids numerical integration failures during
+exploration of extreme parameter regions in warmup.
 
 ### adapt_delta = 0.90
 
