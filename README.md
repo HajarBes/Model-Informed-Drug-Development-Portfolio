@@ -74,7 +74,7 @@ A 9-state ODE system encoding adaptive resistance, lineage-specific feedback reb
 - CYP3A4 inhibition bridge: ketoconazole co-admin predicts 5.2-fold AUC increase
 - Production diagnostics: GOF, VPC, eta distributions, individual fits, covariate forest plot
 
-**Tools:** R, nlmixr2, rxode2, Python | **Regulatory:** FDA PopPK Guidance (2022)
+**Tools:** R, nlmixr2, rxode2, NONMEM, Python | **Regulatory:** FDA PopPK Guidance (2022)
 
 [View Project &rarr;](02-POPPK-midazolam-cyp3a4-probe/)
 

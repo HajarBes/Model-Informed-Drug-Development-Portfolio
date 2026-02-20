@@ -167,6 +167,19 @@ for inclusion criteria.
 
 ---
 
+## NONMEM Control Stream
+
+A NONMEM 7.5-compatible control stream is included in `nonmem/` to mirror
+the nlmixr2 model structure (2-compartment oral, first-order absorption,
+WT allometry, combined residual error). It demonstrates NONMEM syntax and
+parameter mapping; results may differ slightly from nlmixr2 due to estimator
+implementation/settings.
+
+See [`nonmem/README.md`](nonmem/README.md) for parameter mapping, data
+preparation, and run instructions.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -206,6 +219,10 @@ Steps 8-9 (literature qualification) need Python 3 + openpyxl + R + deSolve.
 │       ├── provenance.md                   # Data lineage
 │       ├── transforms.md                   # Unit conversions
 │       └── qualification_set.md            # Inclusion criteria + study table
+├── nonmem/
+│   ├── midazolam_2cmt_saem.ctl             # NONMEM control stream (SAEM)
+│   ├── export_for_nonmem.R                 # Create NM-ready dataset
+│   └── README.md                           # Parameter mapping + run instructions
 ├── figures/                                # Decision-oriented figures
 ├── outputs/tables/                         # Estimates, AUCR, qualification summary
 └── report/
