@@ -707,7 +707,7 @@ def parse_args():
                     help="Simulation scenario (default: all)")
     ap.add_argument("--t_days", type=int, default=180,
                     help="Simulation duration in days (default: 180)")
-    ap.add_argument("--outdir", type=str, default="docs/figures",
+    ap.add_argument("--outdir", type=str, default="figures",
                     help="Output directory for figures")
     ap.add_argument("--csv_dir", type=str, default="outputs",
                     help="Output directory for simulation CSVs")

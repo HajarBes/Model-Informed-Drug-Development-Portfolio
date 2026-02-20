@@ -245,7 +245,7 @@ dR/dt = (1/tau_R) * (R_target - R)
 
 ## Implementation Architecture
 
-### Single file: `src/kras_qsp.py`
+### Single file: `analysis/kras_qsp.py`
 
 ```python
 # Pseudocode structure
@@ -309,12 +309,12 @@ def plot_all(results, scenario_name, outdir):
 ### CLI Interface
 
 ```bash
-python src/kras_qsp.py --scenario nsclc_mono    # Fig 1-4
-python src/kras_qsp.py --scenario crc_mono      # Fig 4-5
-python src/kras_qsp.py --scenario crc_combo     # Fig 6
-python src/kras_qsp.py --scenario all           # All scenarios + comparison
-python src/kras_qsp.py --vpop --n 500           # Fig 7 (M7)
-python src/kras_qsp.py --sensitivity            # Fig 8 (M8)
+python analysis/kras_qsp.py --scenario nsclc_mono    # Fig 1-4
+python analysis/kras_qsp.py --scenario crc_mono      # Fig 4-5
+python analysis/kras_qsp.py --scenario crc_combo     # Fig 6
+python analysis/kras_qsp.py --scenario all           # All scenarios + comparison
+python analysis/kras_qsp.py --vpop --n 500           # Fig 7 (M7)
+python analysis/kras_qsp.py --sensitivity            # Fig 8 (M8)
 ```
 
 ---

@@ -4,7 +4,7 @@
 
 9-state ODE system | Adaptive resistance | Virtual population | Global sensitivity analysis | ICH M15 aligned
 
-![Model Summary Dashboard](docs/figures/fig7_model_summary.png)
+![Model Summary Dashboard](figures/fig7_model_summary.png)
 
 ---
 
@@ -76,12 +76,12 @@ Full equations and parameter tables: [`model/equations.md`](model/equations.md)
 
 | | |
 |:---:|:---:|
-| ![Fig 5](docs/figures/fig5_crc_vs_nsclc.png) | ![Fig 6](docs/figures/fig6_combination_benefit.png) |
+| ![Fig 5](figures/fig5_crc_vs_nsclc.png) | ![Fig 6](figures/fig6_combination_benefit.png) |
 | **CRC vs NSCLC differential response** | **Combination benefit in CRC** |
-| ![Fig 8](docs/figures/fig8_waterfall_vpop.png) | ![Fig 9](docs/figures/fig9_tornado_sensitivity.png) |
+| ![Fig 8](figures/fig8_waterfall_vpop.png) | ![Fig 9](figures/fig9_tornado_sensitivity.png) |
 | **Virtual population waterfall (N=200)** | **Morris global sensitivity analysis** |
 
-All 9 figures in [`docs/figures/`](docs/figures/)
+All 9 figures in [`figures/`](figures/)
 
 ---
 
@@ -95,9 +95,9 @@ pip install -r requirements.txt
 bash run_all.sh
 
 # Or run individually:
-python src/kras_qsp.py --scenario all --t_days 270 --outdir docs/figures --save_csv --csv_dir outputs
-python src/vpop_sensitivity.py --n_vpop 200 --t_days 180 --vpop-only
-python src/vpop_sensitivity.py --t_days 90 --sensitivity-only
+python analysis/kras_qsp.py --scenario all --t_days 270 --outdir figures --save_csv --csv_dir outputs
+python analysis/vpop_sensitivity.py --n_vpop 200 --t_days 180 --vpop-only
+python analysis/vpop_sensitivity.py --t_days 90 --sensitivity-only
 ```
 
 ---
@@ -107,40 +107,39 @@ python src/vpop_sensitivity.py --t_days 90 --sensitivity-only
 | Document | Description |
 |----------|-------------|
 | [`model/equations.md`](model/equations.md) | Full ODE system, parameter tables, steady-state derivation |
-| [`docs/MODEL_BLUEPRINT.md`](docs/MODEL_BLUEPRINT.md) | Model specification and design rationale |
-| [`docs/ONCOLOGY_INTEL.md`](docs/ONCOLOGY_INTEL.md) | Literature review: KRAS biology, clinical landscape, regulatory context |
-| [`docs/MIDD_CREDIBILITY_CHECKLIST.md`](docs/MIDD_CREDIBILITY_CHECKLIST.md) | ICH M15 / EMA credibility assessment (10 sections) |
-| [`docs/regulatory/`](docs/regulatory/) | Regulatory-style model report |
+| [`report/MODEL_BLUEPRINT.md`](report/MODEL_BLUEPRINT.md) | Model specification and design rationale |
+| [`report/ONCOLOGY_INTEL.md`](report/ONCOLOGY_INTEL.md) | Literature review: KRAS biology, clinical landscape, regulatory context |
+| [`report/MIDD_CREDIBILITY_CHECKLIST.md`](report/MIDD_CREDIBILITY_CHECKLIST.md) | ICH M15 / EMA credibility assessment (10 sections) |
+| [`report/`](report/) | Regulatory-style model report |
 
 ---
 
 ## Repo Structure
 
 ```
-kras-qsp-portfolio/
+01-KRAS-G12C-qsp-model/
 ├── README.md
 ├── requirements.txt
 ├── run_all.sh                       # One-command full regeneration
 ├── LICENSE
 ├── model/
 │   └── equations.md                 # Full ODE system & parameter tables
-├── src/
+├── analysis/
 │   ├── kras_qsp.py                  # Main QSP model (9 states, M1-M6b)
 │   ├── vpop_sensitivity.py          # Virtual population + Morris SA
 │   ├── pk_onecomp.py                # Legacy PK-only module
 │   └── extract_kras_targets.py      # Utility: extract clinical targets
 ├── data/
-│   ├── raw/                         # FDA labels, trial papers, reviews
 │   ├── processed/                   # Extracted numerical data
 │   └── notes/                       # Extraction log
-├── docs/
-│   ├── figures/                     # Publication-quality figures (fig1-fig9)
+├── figures/                         # Publication-quality figures (fig1-fig9)
+├── report/
 │   ├── MODEL_BLUEPRINT.md
 │   ├── ONCOLOGY_INTEL.md
 │   ├── MIDD_CREDIBILITY_CHECKLIST.md
-│   └── regulatory/
+│   └── REGULATORY_REPORT_KRAS_QSP.md
 ├── outputs/                         # Simulation CSVs + Vpop/SA results
-└── scripts/                         # Utility shell scripts
+└── tests/                           # Unit tests (pytest)
 ```
 
 ---

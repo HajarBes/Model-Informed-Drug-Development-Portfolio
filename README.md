@@ -29,6 +29,20 @@ Two interactive applications built with R Shiny — click and explore instead of
 
 ---
 
+## Sotorasib Drug Development Arc
+
+Three projects in this portfolio trace the sotorasib drug program through complementary modeling lenses — together they form a single drug development narrative:
+
+| Stage | Project | Question Answered |
+|-------|---------|-------------------|
+| **Mechanism** | [01 — QSP Model](#01--kras-g12c-qsp-model) | Why does sotorasib fail in CRC but respond in NSCLC? Identifies adaptive resistance via feedback rebound as the key mechanism. |
+| **DDI Risk** | [03 — Static DDI](#03--static-ddi-risk-assessment) | Is sotorasib a CYP3A4 perpetrator? Reveals opposing TDI + induction that static models cannot resolve — PBPK escalation required. |
+| **Dose Selection** | [05 — Exposure-Response](#05--sotorasib-exposure-response--dose-optimization) | Does the E-R data justify dose optimization? Saturable absorption compresses exposure across 180-960 mg, yielding flat efficacy and overlapping benefit-risk profiles. |
+
+Reading 01 → 03 → 05 in sequence mirrors how a pharmacometrician would support a single drug program — from mechanistic understanding, through clinical pharmacology risk assessment, to regulatory dose optimization.
+
+---
+
 ## 01 | KRAS G12C QSP Model
 
 > **Why does sotorasib work in NSCLC but fail in CRC — and how does combination therapy rescue outcomes?**
@@ -36,12 +50,12 @@ Two interactive applications built with R Shiny — click and explore instead of
 A 9-state ODE system encoding adaptive resistance, lineage-specific feedback rebound, and bypass signaling. Virtual population (N=200) with Latin Hypercube sampling reproduces the NSCLC vs CRC efficacy gap observed in CodeBreaK 100.
 
 <p align="center">
-  <img src="01-KRAS-G12C-qsp-model/docs/figures/fig8_waterfall_vpop.png" width="100%" alt="Virtual population waterfall plot"/>
+  <img src="01-KRAS-G12C-qsp-model/figures/fig8_waterfall_vpop.png" width="100%" alt="Virtual population waterfall plot"/>
 </p>
 <p align="center"><i>Virtual population waterfall plots — NSCLC mono vs CRC mono vs CRC combination. mPFS matches clinical data within 12%.</i></p>
 
 <p align="center">
-  <img src="01-KRAS-G12C-qsp-model/docs/figures/fig5_crc_vs_nsclc.png" width="80%" alt="CRC vs NSCLC differential response"/>
+  <img src="01-KRAS-G12C-qsp-model/figures/fig5_crc_vs_nsclc.png" width="80%" alt="CRC vs NSCLC differential response"/>
 </p>
 <p align="center"><i>Differential tumor response and pathway rebound dynamics — CRC rebounds faster due to 3x stronger EGFR-driven feedback gain.</i></p>
 

@@ -33,7 +33,7 @@ Low risk — model supports mechanistic understanding and hypothesis generation.
 | ICH M15 Principle | How Addressed |
 |-------------------|---------------|
 | Fit-for-purpose credibility | CoU is mechanistic explanation, not quantitative prediction — qualitative validation sufficient |
-| Transparency | Full equations in `model/equations.md`, code in `src/kras_qsp.py`, parameters sourced and cited |
+| Transparency | Full equations in `model/equations.md`, code in `analysis/kras_qsp.py`, parameters sourced and cited |
 | Reproducibility | Single-command execution regenerates all outputs |
 | Stakeholder engagement | Model design informed by published QSP frameworks (Stites 2018, Sumi 2021) |
 
@@ -144,11 +144,11 @@ Every model parameter is traceable to a published source. Full parameter tables 
 
 | Check | Method | Status | Evidence |
 |-------|--------|--------|----------|
-| Equations match specification | Manual review: `src/kras_qsp.py` vs `model/equations.md` | PASS | ODE RHS matches documented equations |
+| Equations match specification | Manual review: `analysis/kras_qsp.py` vs `model/equations.md` | PASS | ODE RHS matches documented equations |
 | Mass conservation (KRAS) | KRAS_GDP + KRAS_GTP + KRAS_drug tracked; synthesis/degradation balanced at SS | PASS | No-drug SS: total KRAS = 1.0 uM |
 | Unit consistency | All rates in /h, concentrations in uM or mg/L, time in hours | PASS | Conversion factors documented in code |
 | Solver convergence | RK45 with rtol=1e-6, atol=1e-9; verified no step-size warnings | PASS | solve_ivp completes without errors |
-| Reproducibility | `python src/kras_qsp.py --scenario all` regenerates all outputs | PASS | Deterministic; identical outputs on re-run |
+| Reproducibility | `python analysis/kras_qsp.py --scenario all` regenerates all outputs | PASS | Deterministic; identical outputs on re-run |
 
 ### 5.2 Steady-State Verification (No Drug)
 
@@ -282,10 +282,10 @@ cd kras-qsp-portfolio
 pip install "numpy<2" "scipy<1.12" matplotlib pandas SALib
 
 # Regenerate all outputs (figures + CSVs)
-python src/kras_qsp.py --scenario all --t_days 270 --outdir docs/figures --save_csv --csv_dir outputs
+python analysis/kras_qsp.py --scenario all --t_days 270 --outdir figures --save_csv --csv_dir outputs
 
 # Virtual population + sensitivity analysis
-python src/vpop_sensitivity.py --n_vpop 200 --t_days 90
+python analysis/vpop_sensitivity.py --n_vpop 200 --t_days 90
 ```
 
 Base model outputs are deterministic. Vpop/SA use fixed seeds (seed=42) for reproducibility.
@@ -311,8 +311,8 @@ The EMA 2025 concept paper on reporting of mechanistic models recommends structu
 | Model verification | Section 5 | COMPLETE |
 | Model validation (fit-for-purpose) | Section 6 | COMPLETE |
 | Sensitivity and uncertainty analysis | Section 7 | COMPLETE (Morris + Vpop executed) |
-| Model equations and code availability | `model/equations.md`, `src/kras_qsp.py` | COMPLETE |
-| Results and interpretation | `docs/figures/`, `outputs/` | COMPLETE |
+| Model equations and code availability | `model/equations.md`, `analysis/kras_qsp.py` | COMPLETE |
+| Results and interpretation | `figures/`, `outputs/` | COMPLETE |
 | Model limitations and future work | Section 3.2 | COMPLETE |
 
 ---

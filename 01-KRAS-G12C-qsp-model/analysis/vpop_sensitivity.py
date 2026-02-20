@@ -10,10 +10,10 @@ Generates:
   - outputs/sensitivity_morris.csv
 
 Usage:
-  python src/vpop_sensitivity.py                     # both M7 + M8
-  python src/vpop_sensitivity.py --vpop-only         # M7 only
-  python src/vpop_sensitivity.py --sensitivity-only  # M8 only
-  python src/vpop_sensitivity.py --n_vpop 1000       # larger Vpop
+  python analysis/vpop_sensitivity.py                     # both M7 + M8
+  python analysis/vpop_sensitivity.py --vpop-only         # M7 only
+  python analysis/vpop_sensitivity.py --sensitivity-only  # M8 only
+  python analysis/vpop_sensitivity.py --n_vpop 1000       # larger Vpop
 
 Author: Hajar Besbassi
 """
@@ -513,7 +513,7 @@ def parse_args():
                     help="Number of virtual patients per scenario (default: 200)")
     ap.add_argument("--t_days", type=int, default=90,
                     help="Simulation duration in days (default: 90)")
-    ap.add_argument("--outdir", type=str, default="docs/figures",
+    ap.add_argument("--outdir", type=str, default="figures",
                     help="Output directory for figures")
     ap.add_argument("--csv_dir", type=str, default="outputs",
                     help="Output directory for CSVs")

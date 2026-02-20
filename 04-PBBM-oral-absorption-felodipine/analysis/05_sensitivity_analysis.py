@@ -4,7 +4,7 @@
 # =============================================================================
 #
 # Screens 15 parameters using Morris method (SALib) with targets AUC and Cmax.
-# Same pattern as 01-KRAS-G12C-qsp-model/src/vpop_sensitivity.py.
+# Same pattern as 01-KRAS-G12C-qsp-model/analysis/vpop_sensitivity.py.
 #
 # Author: Hajar Besbassi
 

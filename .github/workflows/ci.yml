@@ -34,14 +34,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Run unit tests
+        run: python -m pytest tests/ -v
+
       - name: Run pipeline
         run: bash run_all.sh
 
       - name: Verify outputs
         run: |
-          test -f docs/figures/fig1_pk_profile.png
-          test -f docs/figures/fig8_waterfall_vpop.png
-          test -f docs/figures/fig9_tornado_sensitivity.png
+          test -f figures/fig1_pk_profile.png
+          test -f figures/fig8_waterfall_vpop.png
+          test -f figures/fig9_tornado_sensitivity.png
           test -f outputs/sim_vehicle.csv
           test -f outputs/vpop_results.csv
           test -f outputs/sensitivity_morris.csv
@@ -53,7 +56,7 @@ jobs:
         with:
           name: kras-qsp-outputs
           path: |
-            01-KRAS-G12C-qsp-model/docs/figures/
+            01-KRAS-G12C-qsp-model/figures/
             01-KRAS-G12C-qsp-model/outputs/
           if-no-files-found: ignore
 
@@ -209,6 +212,9 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: python -m pytest tests/ -v
 
       - name: Run pipeline (skip if OSP data missing)
         id: run-pipeline

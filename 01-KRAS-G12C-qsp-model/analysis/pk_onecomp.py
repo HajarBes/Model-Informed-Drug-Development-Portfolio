@@ -75,7 +75,7 @@ def main():
     ap.add_argument("--ka", type=float, default=1.0)
     ap.add_argument("--V", type=float, default=50.0)
     ap.add_argument("--out_csv", type=str, default="data/processed/pk_sotorasib_onecomp.csv")
-    ap.add_argument("--out_fig", type=str, default="docs/figures/pk_sotorasib_onecomp.png")
+    ap.add_argument("--out_fig", type=str, default="figures/pk_sotorasib_onecomp.png")
     args = ap.parse_args()
 
     p = PKParams(
