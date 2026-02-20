@@ -180,6 +180,29 @@ preparation, and run instructions.
 
 ---
 
+## Bayesian Estimation (Stan)
+
+Full Bayesian re-estimation using cmdstanr + Stan with informative priors
+from the OSP PBPK literature (Hanke et al. 2018). The same 2-compartment
+structural model is estimated via MCMC, creating a three-tool comparison:
+
+> **nlmixr2 SAEM | NONMEM SAEM | Stan MCMC**
+
+Includes MCMC convergence diagnostics (trace plots, Rhat, ESS), posterior
+predictive checks, prior vs posterior overlays, prior sensitivity analysis
+(informative vs weakly informative), and LOO-CV with Pareto-k diagnostics.
+
+| Figure | Question |
+|--------|----------|
+| [`bayesian/comparison_forest.png`](bayesian/comparison_forest.png) | Do all three methods recover the same parameters? |
+| [`bayesian/bayes_prior_vs_posterior.png`](bayesian/bayes_prior_vs_posterior.png) | Does the data dominate the prior, or does the prior drive the posterior? |
+| [`bayesian/comparison_pk_profile.png`](bayesian/comparison_pk_profile.png) | Are the typical PK profiles structurally identical across methods? |
+
+See [`bayesian/README.md`](bayesian/README.md) for prior specification,
+parameter mapping, run instructions, and technical notes.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -223,6 +246,12 @@ Steps 8-9 (literature qualification) need Python 3 + openpyxl + R + deSolve.
 │   ├── midazolam_2cmt_saem.ctl             # NONMEM control stream (SAEM)
 │   ├── export_for_nonmem.R                 # Create NM-ready dataset
 │   └── README.md                           # Parameter mapping + run instructions
+├── bayesian/
+│   ├── midazolam_2cmt_poppk.stan           # Stan model (informative OSP priors)
+│   ├── 01_fit_bayesian.R                   # Data prep + MCMC sampling (cmdstanr)
+│   ├── 02_bayesian_diagnostics.R           # Diagnostics + prior sensitivity
+│   ├── 03_compare_methods.R               # Three-way comparison + LOO-CV
+│   └── README.md                           # Priors, mapping, technical notes
 ├── figures/                                # Decision-oriented figures
 ├── outputs/tables/                         # Estimates, AUCR, qualification summary
 └── report/
