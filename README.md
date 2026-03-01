@@ -17,6 +17,7 @@ End-to-end quantitative pharmacology projects — from mechanistic ODE systems t
 | 03 | [Static DDI Framework](#03--static-ddi-risk-assessment) | Mechanistic static model + **R Shiny** | Dual TDI + induction resolved | Drug-Drug Interactions |
 | 04 | [PBBM Felodipine](#04--pbbm-oral-absorption--felodipine) | 17-state ACAT | 9/9 IR arms within 2-fold | Biopharmaceutics |
 | 05 | [Sotorasib E-R](#05--sotorasib-exposure-response--dose-optimization) | E-R logistic + dose optimization + **R Shiny** | Flat E-R (saturable absorption) | Oncology Dose Selection |
+| 06 | [Clinical Dataset Engineering](#06--clinical-dataset-engineering--qc) | SDTM-to-NONMEM pipeline + QC + **R Shiny** | 19 checks, 0 failures | PM Support / Data Engineering |
 
 ### Interactive R Shiny Apps
 
@@ -26,6 +27,7 @@ Two interactive applications built with R Shiny — click and explore instead of
 |-----|---------|-------------|--------|
 | **DDI Screening Calculator** | 03 | Real-time FDA DDI screening with presets, Monte Carlo, sensitivity analysis, transporter dashboard | `shiny::runApp("03-static-DDI-framework/shiny_app")` |
 | **E-R Dose Explorer** | 05 | Dose-exposure-response explorer with patient subgroup filtering and benefit-risk dashboard | `shiny::runApp("05-sotorasib-exposure-response/shiny_app")` |
+| **Dataset QC Dashboard** | 06 | 6-tab QC inspector: missingness, subject timelines, BLQ, covariates, PK profiles | `shiny::runApp("06-clinical-dataset-engineering-qc/shiny_app")` |
 
 ---
 
@@ -187,6 +189,39 @@ Exposure-response analysis for the FDA dose optimization debate. Saturable absor
 
 ---
 
+## 06 | Clinical Dataset Engineering & QC
+
+> **Can a reproducible, config-driven R pipeline transform SDTM/ADaM clinical data into submission-ready NONMEM and ADNCA datasets with full QC documentation and traceability?**
+
+End-to-end dataset engineering pipeline using CDISC Pilot Study data (CDISCPILOT01, Xanomeline). Extracts 5 SDTM domains, builds a NONMEM-ready analysis dataset (168 subjects, 2,717 records) and an ADNCA dataset, runs 19 independent QC checks, renders an automated HTML report, and assembles a mock e-submission package with eCTD folder conventions.
+
+<p align="center">
+  <img src="06-clinical-dataset-engineering-qc/figures/pipeline_overview.png" width="100%" alt="Pipeline overview"/>
+</p>
+<p align="center"><i>6-step modular pipeline: SDTM extraction, NONMEM build, ADNCA build, QC checks, QC report, submission packaging.</i></p>
+
+<p align="center">
+  <img src="06-clinical-dataset-engineering-qc/figures/pk_concentration_profiles.png" width="48%" alt="PK profiles"/>
+  &nbsp;&nbsp;
+  <img src="06-clinical-dataset-engineering-qc/figures/qc_checklist_summary.png" width="48%" alt="QC checklist"/>
+</p>
+<p align="center"><i>Left: Individual PK concentration-time profiles by treatment arm (log scale). Right: 19 QC checks — 14 PASS, 0 FAIL, 5 INFO.</i></p>
+
+**Key Results:**
+- 168 subjects, 2,717 records, 23 variables in NONMEM-ready dataset (86 placebo/screen failures excluded)
+- 19 independent QC checks: 14 PASS, 0 FAIL, 5 INFO — BLQ rate ~21%, concentrated at terminal phase
+- ADNCA dataset: 4,572 records, 254 subjects (all arms) for NCA analysis
+- Mock eCTD submission package with define-style metadata and naming conventions
+- Config-driven: LLOQ, units, covariates defined in one configuration file
+
+**Tools:** R (tidyverse, pharmaversesdtm, pharmaverseadam, Shiny, rmarkdown) | **Standards:** CDISC SDTM/ADaM, eCTD, FDA dataset submission guidance
+
+**Interactive App:** [`shiny::runApp("06-clinical-dataset-engineering-qc/shiny_app")`](06-clinical-dataset-engineering-qc/shiny_app/) — 6-tab QC dashboard for visual dataset inspection.
+
+[View Project &rarr;](06-clinical-dataset-engineering-qc/)
+
+---
+
 ## Technical Scope
 
 | Category | Coverage |
@@ -195,7 +230,8 @@ Exposure-response analysis for the FDA dose optimization debate. Saturable absor
 | **Analysis** | Global sensitivity (Morris), virtual populations (LHS), Monte Carlo, virtual bioequivalence, dose optimization (benefit-risk) |
 | **Languages** | Python (NumPy, SciPy, pandas, matplotlib, SALib, statsmodels), R (nlmixr2, rxode2, ggplot2, Shiny) |
 | **Regulatory** | ICH M15, ICH M12, ICH E4, FDA PopPK (2022), FDA DDI (2020), FDA PBBM (2023), FDA E-R (2003/2023), EMA PBPK, Project Optimus |
-| **Data** | OSP Database for Observed Data, published clinical studies, PubChem, DrugBank |
+| **Data** | OSP Database for Observed Data, published clinical studies, PubChem, DrugBank, CDISC Pilot (pharmaversesdtm/pharmaverseadam) |
+| **Dataset Engineering** | SDTM-to-NONMEM pipeline, ADNCA generation, independent QC (19 scripted checks), mock e-submission (eCTD) |
 | **Workflow** | Reproducible pipelines (`run_all.sh`), regulatory-style reports, version-controlled outputs |
 | **CI** | GitHub Actions — runs each project's full pipeline in lightweight mode; licensed tools (NONMEM, CmdStan) and external datasets are excluded |
 
@@ -222,7 +258,8 @@ Model-Informed-Drug-Development-Portfolio/
 ├── 02-POPPK-midazolam-cyp3a4-probe/ # PopPK: CYP3A4 probe + external qualification
 ├── 03-static-DDI-framework/         # DDI: multi-mechanism risk assessment
 ├── 04-PBBM-oral-absorption-felodipine/ # PBBM: oral absorption + food effect
-└── 05-sotorasib-exposure-response/  # E-R: dose optimization + benefit-risk
+├── 05-sotorasib-exposure-response/  # E-R: dose optimization + benefit-risk
+└── 06-clinical-dataset-engineering-qc/ # Dataset engineering: SDTM to NONMEM + QC
 ```
 
 Each project is self-contained with its own `README.md`, `run_all.sh`, analysis scripts, figures, output tables, and regulatory-style report documents.
