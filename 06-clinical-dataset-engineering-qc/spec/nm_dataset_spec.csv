@@ -1,0 +1,20 @@
+variable,label,type,source,derivation,format,values
+C,Comment Flag,character,Derived,"Blank = active record; 'C' = commented out",text,"'' or 'C'"
+ID,Subject Identifier,integer,DM.USUBJID,Numeric ID assigned per unique USUBJID,integer,1-N
+TIME,Time from First Dose,numeric,Derived,"difftime(record_datetime - first_dose_datetime) in hours",decimal (4dp),>=0
+TAD,Time After Most Recent Dose,numeric,Derived,"TIME - time_of_last_dose_event; 0 for dose records",decimal (4dp),>=0
+AMT,Dose Amount,numeric,EX.EXDOSE,"Dose amount in mg for EVID=1; 0 for EVID=0",decimal (2dp),>=0
+DV,Dependent Variable (Concentration),numeric,PC.PCSTRESN,"Standardized concentration in ug/mL; '.' for dose records; LLOQ/2 for BLQ",decimal (4dp),>=0 or .
+MDV,Missing Dependent Variable,integer,Derived,"1 if DV is missing or dose record; 0 otherwise",integer,"0, 1"
+EVID,Event Identifier,integer,Derived,"1 = dosing event; 0 = observation event",integer,"0, 1"
+CMT,Compartment Number,integer,Derived,"1 = dosing compartment; 2 = observation compartment",integer,"1, 2"
+BLQ,Below Limit of Quantification Flag,integer,Derived,"1 if original concentration < LLOQ; 0 otherwise",integer,"0, 1"
+AGE,Age at Baseline,numeric,DM.AGE,Age in years from demographics,integer,18-100
+SEX,Sex,integer,DM.SEX,"Recoded: 0 = Female; 1 = Male",integer,"0, 1"
+RACE,Race,integer,DM.RACE,"Recoded: 1=White; 2=Black; 3=Asian; 4=Other",integer,"1, 2, 3, 4"
+WT,Baseline Body Weight,numeric,VS (VSTESTCD='WEIGHT'),"Baseline weight in kg (VSBLFL='Y')",decimal (1dp),30-200
+HT,Baseline Height,numeric,VS (VSTESTCD='HEIGHT'),"Baseline height in cm (VSBLFL='Y')",decimal (1dp),120-220
+BMI,Baseline Body Mass Index,numeric,Derived,"WT / (HT/100)^2",decimal (1dp),12-60
+ARM,Treatment Arm Code,character,DM.ARMCD,Treatment arm code from randomization,text,study-specific
+CUMDOSE,Cumulative Dose,numeric,Derived,"Running sum of AMT for EVID=1 records per subject",decimal (2dp),>=0
+USUBJID,Unique Subject Identifier,character,DM.USUBJID,"Retained for traceability (not used in NONMEM)",text,STUDYID-SITEID-SUBJID

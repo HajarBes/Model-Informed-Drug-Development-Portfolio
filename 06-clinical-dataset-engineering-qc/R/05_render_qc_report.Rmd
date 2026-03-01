@@ -1,0 +1,159 @@
+---
+title: "QC Report - NONMEM PK Analysis Dataset"
+subtitle: "CDISCPILOT01 (Xanomeline)"
+author: "H. Besbassi"
+date: ""
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.width = 10, fig.height = 6)
+library(tidyverse)
+library(knitr)
+library(DT)
+```
+
+# 1. Dataset Overview
+
+```{r load}
+nm_data <- read_csv("../outputs/nm_dataset.csv", show_col_types = FALSE, na = ".")
+qc_results <- read_csv("../outputs/qc_checklist.csv", show_col_types = FALSE)
+
+obs_data <- nm_data %>% filter(EVID == 0)
+dose_data <- nm_data %>% filter(EVID == 1)
+subj_data <- nm_data %>% distinct(ID, .keep_all = TRUE)
+```
+
+| Metric | Value |
+|--------|-------|
+| Total records | `r nrow(nm_data)` |
+| Subjects | `r n_distinct(nm_data$ID)` |
+| Variables | `r ncol(nm_data)` |
+| Dosing records | `r nrow(dose_data)` |
+| Observations | `r nrow(obs_data)` |
+| BLQ observations | `r sum(obs_data$BLQ == 1)` (`r round(100*sum(obs_data$BLQ==1)/nrow(obs_data), 1)`%) |
+| Time range | `r min(nm_data$TIME, na.rm=TRUE)` to `r max(nm_data$TIME, na.rm=TRUE)` hours |
+
+# 2. QC Checklist Results
+
+```{r qc_table}
+qc_results %>%
+  mutate(status = case_when(
+    status == "PASS" ~ "PASS",
+    status == "FAIL" ~ "**FAIL**",
+    status == "WARNING" ~ "WARNING",
+    status == "INFO" ~ "INFO",
+    TRUE ~ status
+  )) %>%
+  kable()
+```
+
+**Overall QC Status: `r if_else(sum(qc_results$status == 'FAIL') == 0, 'QC PASS', 'QC FAIL')`**
+
+# 3. Missingness Analysis
+
+```{r missingness}
+miss_summary <- nm_data %>%
+  summarise(across(everything(), ~sum(is.na(.)))) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "n_missing") %>%
+  mutate(pct_missing = round(100 * n_missing / nrow(nm_data), 1)) %>%
+  filter(n_missing > 0) %>%
+  arrange(desc(n_missing))
+
+if (nrow(miss_summary) > 0) {
+  ggplot(miss_summary, aes(x = reorder(variable, n_missing), y = pct_missing)) +
+    geom_col(fill = "#2E75B6") +
+    coord_flip() +
+    labs(title = "Missing Values by Variable", x = "", y = "% Missing") +
+    theme_minimal()
+} else {
+  cat("No missing values in dataset.")
+}
+```
+
+# 4. BLQ Analysis
+
+```{r blq}
+blq_time <- obs_data %>%
+  mutate(time_bin = cut(TAD, breaks = c(-Inf, 0, 2, 6, 12, 24, 48, Inf),
+                        labels = c("Pre-dose", "0-2h", "2-6h", "6-12h", "12-24h", "24-48h", ">48h"))) %>%
+  group_by(time_bin) %>%
+  summarise(pct_blq = round(100 * mean(BLQ == 1, na.rm = TRUE), 1),
+            n = n(), .groups = "drop")
+
+ggplot(blq_time, aes(x = time_bin, y = pct_blq)) +
+  geom_col(fill = "#95A5A6") +
+  geom_text(aes(label = paste0("n=", n)), vjust = -0.5, size = 3) +
+  labs(title = "% BLQ by Time After Dose", x = "", y = "% BLQ") +
+  theme_minimal()
+```
+
+# 5. Covariate Distributions
+
+```{r covariates, fig.height=8}
+cov_vars <- c("AGE", "WT")
+available_covs <- intersect(cov_vars, names(subj_data))
+
+if (length(available_covs) > 0) {
+  cov_long <- subj_data %>%
+    select(ID, ARM, all_of(available_covs)) %>%
+    pivot_longer(all_of(available_covs), names_to = "covariate", values_to = "value") %>%
+    filter(!is.na(value))
+
+  ggplot(cov_long, aes(x = ARM, y = value, fill = ARM)) +
+    geom_boxplot(alpha = 0.7) +
+    facet_wrap(~covariate, scales = "free_y") +
+    labs(title = "Baseline Covariates by Treatment Arm", x = "", y = "") +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+```
+
+# 6. PK Concentration Profiles
+
+```{r pk_profiles}
+pk_plot <- obs_data %>%
+  filter(BLQ == 0, TAD >= 0, TAD <= 50)
+
+ggplot(pk_plot, aes(x = TAD, y = DV, group = factor(ID), color = ARM)) +
+  geom_line(alpha = 0.3, linewidth = 0.3) +
+  geom_point(alpha = 0.3, size = 0.8) +
+  scale_y_log10() +
+  labs(title = "Individual PK Profiles (Quantifiable, TAD 0-50h)",
+       x = "Time After Dose (hours)", y = "Concentration (ug/mL, log)") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+# 7. Cross-Check vs Source
+
+```{r crosscheck}
+dm_source <- read_csv("../data/sdtm/dm.csv", show_col_types = FALSE)
+pc_source <- read_csv("../data/sdtm/pc.csv", show_col_types = FALSE)
+ex_source <- read_csv("../data/sdtm/ex.csv", show_col_types = FALSE)
+
+tibble(
+  Source = c("DM (subjects)", "PC (PK records)", "EX (dose records)"),
+  `Source Count` = c(n_distinct(dm_source$USUBJID), nrow(pc_source), nrow(ex_source)),
+  `Dataset Count` = c(n_distinct(nm_data$ID), nrow(obs_data), nrow(dose_data)),
+  Notes = c("Excluded 86 placebo/screen failure subjects",
+            "Excluded 1016 urine + 1204 non-active-arm observations",
+            "Excluded 226 placebo zero-dose records")
+) %>% kable()
+```
+
+# 8. QC Sign-Off
+
+| Field | Value |
+|-------|-------|
+| QC Analyst | H. Besbassi |
+| QC Date | - |
+| Dataset | nm_dataset.csv |
+| Overall Status | `r if_else(sum(qc_results$status == 'FAIL') == 0, 'QC PASS', 'QC FAIL')` |
+| Checks Run | `r nrow(qc_results)` |
+| Failures | `r sum(qc_results$status == 'FAIL')` |

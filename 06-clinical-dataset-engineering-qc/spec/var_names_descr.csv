@@ -1,0 +1,20 @@
+variable,label,type,length,source_domain,key_variable,comments
+C,Comment Flag,Char,1,Derived,No,Blank or C
+ID,Subject Identifier,Num,8,DM,Yes,Unique numeric ID per subject
+TIME,Time from First Dose (hours),Num,8,Derived,No,Reference: first dose datetime
+TAD,Time After Most Recent Dose (hours),Num,8,Derived,No,Reset at each dose
+AMT,Dose Amount (mg),Num,8,EX,No,0 for observations
+DV,Concentration (ug/mL),Num,8,PC,No,LLOQ/2 for BLQ; missing for doses
+MDV,Missing DV Flag,Num,8,Derived,No,1=missing; 0=present
+EVID,Event ID,Num,8,Derived,No,1=dose; 0=observation
+CMT,Compartment,Num,8,Derived,No,1=dose; 2=observation
+BLQ,BLQ Flag,Num,8,Derived,No,1=below LLOQ; 0=above
+AGE,Age (years),Num,8,DM,No,Baseline value
+SEX,Sex (0=F 1=M),Num,8,DM,No,Recoded from character
+RACE,Race (1=W 2=B 3=A 4=O),Num,8,DM,No,Recoded from character
+WT,Weight (kg),Num,8,VS,No,Baseline value
+HT,Height (cm),Num,8,VS,No,Baseline value
+BMI,BMI (kg/m2),Num,8,Derived,No,WT/(HT/100)^2
+ARM,Treatment Arm Code,Char,20,DM,No,Randomized arm
+CUMDOSE,Cumulative Dose (mg),Num,8,Derived,No,Running total per subject
+USUBJID,Unique Subject ID,Char,50,DM,Yes,Traceability only
