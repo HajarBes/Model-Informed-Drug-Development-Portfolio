@@ -1,6 +1,6 @@
 # Model-Informed Drug Development Portfolio
 
-**Hajar Besbassi** | Pharmacometrics, QSP & Biopharmaceutics Modeling
+**Hajar Besbassi** | Quantitative Scientist | Mechanistic & Systems Modeling | QSP| PopPK/PD, PBPK| PhD Applied Mathematics
 
 [![CI](https://github.com/HajarBes/Model-Informed-Drug-Development-Portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/HajarBes/Model-Informed-Drug-Development-Portfolio/actions/workflows/ci.yml)
 
